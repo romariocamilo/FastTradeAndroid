@@ -71,7 +71,7 @@ namespace FastTradeAndroid
             campoLogin.SendKeys("caiocosta");
             campoSenha.SendKeys("102030");
             botaoLogin.Click();
-            Thread.Sleep(3000);
+            Thread.Sleep(4000);
         }
 
         public void Logof()
