@@ -21,7 +21,8 @@ namespace FastTradeAndroid
         {
             Ativos ativos = new Ativos();
             ativos.LoginFluxoCompleto();
-            ativos.AdicionaAtivo ();
+            //ativos.AdicionaAtivo ();
+            ativos.AdicionaAtivoRepetido();
             ativos.Logof();
         }
     }

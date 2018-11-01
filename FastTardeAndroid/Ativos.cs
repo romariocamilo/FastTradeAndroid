@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace FastTradeAndroid
@@ -36,6 +37,16 @@ namespace FastTradeAndroid
             EscolheAtivo("IMOB");
         }
 
+        public void AdicionaAtivoRepetido()
+        {
+            EscolheAtivo("IBOV");
+            EscolheAtivo("IBOV");
+
+            espera.Until(ExpectedConditions.ElementToBeClickable(alertaAtivoRepetido));
+            Thread.Sleep(3000);
+            alertaAtivoRepetido.Click();
+        }
+
         public void EscolheAtivo(string ativo)
         {
             bool validacao = false;
@@ -49,21 +60,6 @@ namespace FastTradeAndroid
             espera.Until(ExpectedConditions.ElementToBeClickable(campoTextoAtivo));
             campoTextoAtivo.SendKeys(ativo);
             botaoAdicionaAtivo.Click();
-
-            //try
-            //{
-            //    espera.Until(ExpectedConditions.ElementIsVisible(By.Id("android:id/button1")));
-            //    validacao = true;
-            //}
-            //catch
-            //{
-            //    validacao = false;
-            //}
-
-            //if (validacao)
-            //{
-            //    alertaAtivoRepetido.Click();
-            //}
         }
     }
 }
