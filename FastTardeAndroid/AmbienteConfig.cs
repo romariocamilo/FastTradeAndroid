@@ -16,7 +16,7 @@ namespace FastTradeAndroid
             DesiredCapabilities capabilities = new DesiredCapabilities();
             AppiumDriver<AndroidElement> driver;
 
-            string deviceName = "deviceName";
+            string deviceName = "H9AZB600Z372GYZ";
             string platformDesktop = "Windows";
             string appPackage = "br.com.cedrotech.fastmobile";
             string appActivity = "br.com.cedrotech.fastmobile.account.login.LoginActivity";

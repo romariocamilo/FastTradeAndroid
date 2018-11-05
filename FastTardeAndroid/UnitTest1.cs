@@ -9,21 +9,20 @@ namespace FastTradeAndroid
     [TestClass]
     public class UnitTest1
     {
-        [TestMethod]
-        public void LoginCorreto()
-        {
-            Login logins = new Login();
-            logins.SuiteLoginLogof();
-        }
-        
+        //[TestMethod]
+        //public void LoginCorreto()
+        //{
+        //    Login logins = new Login();
+        //    logins.SuiteLoginLogof();
+        //}
+
         [TestMethod]
         public void AdicionaAtivos()
         {
             Ativos ativos = new Ativos();
             ativos.LoginFluxoCompleto();
-            //ativos.AdicionaAtivo ();
-            ativos.AdicionaAtivoRepetido();
-            ativos.Logof();
+            ativos.RemoveAtivo();
+            //ativos.Logof();
         }
     }
 }
