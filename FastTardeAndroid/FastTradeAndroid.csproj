@@ -67,6 +67,7 @@
   <ItemGroup>
     <Compile Include="AmbienteConfig.cs" />
     <Compile Include="Ativos.cs" />
+    <Compile Include="Listas.cs" />
     <Compile Include="Login.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

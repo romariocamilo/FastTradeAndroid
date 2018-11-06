@@ -15,6 +15,7 @@ namespace FastTradeAndroid
 {
     class Ativos : Login
     {
+        #region Instânciando elementos das telas mobile
         [FindsBy(How = How.Id, Using = "br.com.cedrotech.fastmobile:id/active_item_header_button")]
         IWebElement subMenuAtivo;
 
@@ -24,7 +25,7 @@ namespace FastTradeAndroid
         [FindsBy(How = How.Id, Using = "br.com.cedrotech.fastmobile:id/dialog_add_active_autoCompleteTextView")]
         IWebElement campoTextoAtivo;
 
-        [FindsBy(How = How.XPath, Using = "/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.ListView/android.widget.LinearLayout[1]/android.widget.RelativeLayout/android.widget.TextView")]
+        [FindsBy(How = How.Id, Using = "br.com.cedrotech.fastmobile:id/dialog_add_active_button")]
         IWebElement botaoAdicionaAtivo;
 
         [FindsBy(How = How.Id, Using = "android:id/button1")]
@@ -42,6 +43,10 @@ namespace FastTradeAndroid
         [FindsBy(How = How.XPath, Using = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.support.v4.view.ViewPager/android.widget.FrameLayout/android.widget.RelativeLayout/android.support.v7.widget.RecyclerView/android.widget.LinearLayout[2]/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.LinearLayout[5]")]
         IWebElement destinoElementoUm;
 
+        [FindsBy(How = How.XPath, Using = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.HorizontalScrollView/android.widget.LinearLayout/android.support.v7.app.ActionBar.Tab[2]/android.widget.TextView")]
+        IWebElement minhaLista2;
+
+        #endregion
 
 
         public void AdicionaAtivo()
@@ -49,6 +54,7 @@ namespace FastTradeAndroid
             EscolheAtivo("IBOV");
             EscolheAtivo("IBXX");
             EscolheAtivo("IMOB");
+            AdicionaAtivoLista2();
         }
 
         public void AdicionaAtivoRepetido()
@@ -61,32 +67,30 @@ namespace FastTradeAndroid
             alertaAtivoRepetido.Click();
         }
 
-        public void RemoveAtivo()
-        {
-            Actions nova = new Actions(driver);
+        //public void RemoveAtivo()
+        //{
+        //    Actions nova = new Actions(driver);
 
-            espera.Until(ExpectedConditions.ElementToBeClickable(subMenuAtivo));
-            subMenuAtivo.Click();
+        //    espera.Until(ExpectedConditions.ElementToBeClickable(subMenuAtivo));
+        //    subMenuAtivo.Click();
 
-            espera.Until(ExpectedConditions.ElementToBeClickable(btnEditaPlanilha));
-            btnEditaPlanilha.Click();
+        //    espera.Until(ExpectedConditions.ElementToBeClickable(btnEditaPlanilha));
+        //    btnEditaPlanilha.Click();
 
-            espera.Until(ExpectedConditions.ElementToBeClickable(btnOkEditarPlanilha));
-            btnOkEditarPlanilha.Click();
-            espera.Until(ExpectedConditions.ElementToBeClickable(btnOkEditarPlanilha));
-            btnOkEditarPlanilha.Click();
-            espera.Until(ExpectedConditions.ElementToBeClickable(btnOkEditarPlanilha));
-            btnOkEditarPlanilha.Click();
-            espera.Until(ExpectedConditions.ElementToBeClickable(btnOkEditarPlanilha));
-            btnOkEditarPlanilha.Click();
-            espera.Until(ExpectedConditions.ElementToBeClickable(btnOkEditarPlanilha));
-            btnOkEditarPlanilha.Click();
-        }
+        //    espera.Until(ExpectedConditions.ElementToBeClickable(btnOkEditarPlanilha));
+        //    btnOkEditarPlanilha.Click();
+        //    espera.Until(ExpectedConditions.ElementToBeClickable(btnOkEditarPlanilha));
+        //    btnOkEditarPlanilha.Click();
+        //    espera.Until(ExpectedConditions.ElementToBeClickable(btnOkEditarPlanilha));
+        //    btnOkEditarPlanilha.Click();
+        //    espera.Until(ExpectedConditions.ElementToBeClickable(btnOkEditarPlanilha));
+        //    btnOkEditarPlanilha.Click();
+        //    espera.Until(ExpectedConditions.ElementToBeClickable(btnOkEditarPlanilha));
+        //    btnOkEditarPlanilha.Click();
+        //}
 
         public void EscolheAtivo(string ativo)
         {
-            bool validacao = false;
-
             espera.Until(ExpectedConditions.ElementToBeClickable(subMenuAtivo));
             subMenuAtivo.Click();
 
@@ -96,6 +100,16 @@ namespace FastTradeAndroid
             espera.Until(ExpectedConditions.ElementToBeClickable(campoTextoAtivo));
             campoTextoAtivo.SendKeys(ativo);
             botaoAdicionaAtivo.Click();
+        }
+
+        public void AdicionaAtivoLista2()
+        {
+            espera.Until(ExpectedConditions.ElementToBeClickable(minhaLista2));
+            minhaLista2.Click();
+            EscolheAtivo("VULC3");
+            EscolheAtivo("IBRA");
+            EscolheAtivo("IMAT");
+            EscolheAtivo("BITCOIN");
         }
     }
 }
