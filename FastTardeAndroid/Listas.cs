@@ -21,7 +21,7 @@ namespace FastTradeAndroid
         IWebElement fixas;
 
         [FindsBy(How = How.Id, Using = "android:id/text1")]
-        IWebElement menuFixa;
+        IWebElement opcoesFixas;
 
         [FindsBy(How = How.XPath, Using = "/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.ListView/android.widget.CheckedTextView[1]")]
         IWebElement indiceBovespa;
@@ -32,9 +32,41 @@ namespace FastTradeAndroid
         [FindsBy(How = How.XPath, Using = "/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.ListView/android.widget.CheckedTextView[3]")]
         IWebElement indicadores;
 
-        [FindsBy(How = How.XPath, Using = "")]
-        IWebElement ativoIndiceBovespa;
+        [FindsBy(How = How.XPath, Using = "hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.ListView/android.widget.CheckedTextView[4]")]
+        IWebElement bitcoin;
 
+        [FindsBy(How = How.XPath, Using = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.support.v4.view.ViewPager/android.widget.FrameLayout/android.widget.RelativeLayout/android.support.v7.widget.RecyclerView/android.widget.LinearLayout[2]/android.widget.FrameLayout/android.widget.LinearLayout")]
+        IWebElement elementoPosicaoX;
+
+        [FindsBy(How = How.Id, Using = "br.com.cedrotech.fastmobile:id/fragment_chart_button_line")]
+        IWebElement linha;
+
+        [FindsBy(How = How.Id, Using = "br.com.cedrotech.fastmobile:id/fragment_chart_button_candle")]
+        IWebElement candle;
+
+        [FindsBy(How = How.Id, Using = "br.com.cedrotech.fastmobile:id/fragment_chart_button_interday")]
+        IWebElement seisMeses;
+
+        [FindsBy(How = How.Id, Using = "br.com.cedrotech.fastmobile:id/fragment_chart_button_intraday")]
+        IWebElement diaCorrente;
+
+        [FindsBy(How = How.XPath, Using = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout[2]/android.widget.LinearLayout/android.widget.HorizontalScrollView/android.widget.LinearLayout/android.support.v7.app.ActionBar.Tab[2]")]
+        IWebElement outrasInformacoes;
+
+        [FindsBy(How = How.XPath, Using = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout[2]/android.widget.LinearLayout/android.widget.HorizontalScrollView/android.widget.LinearLayout/android.support.v7.app.ActionBar.Tab[1]")]
+        IWebElement graficos;
+
+        [FindsBy(How = How.Id, Using = "br.com.cedrotech.fastmobile:id/fragment_chart_button_zoom")]
+        IWebElement lupa;
+
+        [FindsBy(How = How.Id, Using = "   br.com.cedrotech.fastmobile:id/activity_chart_details_name")]
+        IWebElement btnFechaLupa;
+
+        [FindsBy(How = How.Id, Using = "Navegar para cima")]
+        IWebElement btnVoltar;
+
+
+     
 
         public void SelecionandoLista()
         {
@@ -47,20 +79,20 @@ namespace FastTradeAndroid
             espera.Until(ExpectedConditions.ElementToBeClickable(fixas));
             fixas.Click();
 
-            espera.Until(ExpectedConditions.ElementToBeClickable(menuFixa));
-            menuFixa.Click();
+            espera.Until(ExpectedConditions.ElementToBeClickable(opcoesFixas));
+            opcoesFixas.Click();
             espera.Until(ExpectedConditions.ElementToBeClickable(indiceBovespa));
             indiceBovespa.Click();
 
-            menuFixa.Click();
+            opcoesFixas.Click();
             espera.Until(ExpectedConditions.ElementToBeClickable(cambio));
             cambio.Click();
 
-            menuFixa.Click();
+            opcoesFixas.Click();
             espera.Until(ExpectedConditions.ElementToBeClickable(indicadores));
             indicadores.Click();
 
-            menuFixa.Click();
+            opcoesFixas.Click();
             espera.Until(ExpectedConditions.ElementToBeClickable(bitcoin));
             bitcoin.Click();
         }
@@ -70,10 +102,24 @@ namespace FastTradeAndroid
             espera.Until(ExpectedConditions.ElementToBeClickable(fixas));
             fixas.Click();
 
-            espera.Until(ExpectedConditions.ElementToBeClickable(menuFixa));
-            menuFixa.Click();
+            espera.Until(ExpectedConditions.ElementToBeClickable(opcoesFixas));
+            opcoesFixas.Click();
             espera.Until(ExpectedConditions.ElementToBeClickable(indiceBovespa));
             indiceBovespa.Click();
+
+            espera.Until(ExpectedConditions.ElementToBeClickable(elementoPosicaoX));
+            elementoPosicaoX.Click();
+
+            espera.Until(ExpectedConditions.ElementToBeClickable(candle));
+            candle.Click();
+            linha.Click();
+            seisMeses.Click();
+            diaCorrente.Click();
+            outrasInformacoes.Click();
+            graficos.Click();
+            lupa.Click();
+            btnFechaLupa.Click();
+            btnVoltar.Click();
 
 
         }

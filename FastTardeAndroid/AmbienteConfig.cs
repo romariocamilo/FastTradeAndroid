@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.Android;
+using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Remote;
 using System;
 using System.Collections.Generic;
@@ -19,7 +20,7 @@ namespace FastTradeAndroid
             string deviceName = "H9AZB600Z372GYZ";
             string platformDesktop = "Windows";
             string appPackage = "br.com.cedrotech.fastmobile";
-            string appActivity = "br.com.cedrotech.fastmobile.account.login.LoginActivity";
+            string appActivity = "br.com.cedrotech.fastmobile.splash.SplashActivity";
             string platFormNameTest = "Android";
             string automationName = "Appium";
 
@@ -31,7 +32,6 @@ namespace FastTradeAndroid
             capabilities.SetCapability("Appium", automationName);
 
             driver = new AndroidDriver<AndroidElement>(new Uri("http://localhost:4723/wd/hub"), capabilities, TimeSpan.FromSeconds(120));
-
             return driver;
         }
     }

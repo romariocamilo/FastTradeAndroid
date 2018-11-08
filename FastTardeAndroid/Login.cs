@@ -1,6 +1,9 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.Android;
+using OpenQA.Selenium.Appium.MultiTouch;
+using OpenQA.Selenium.Interactions;
+using OpenQA.Selenium.Remote;
 using OpenQA.Selenium.Support.PageObjects;
 using OpenQA.Selenium.Support.UI;
 using System;
@@ -15,7 +18,7 @@ namespace FastTradeAndroid
     class Login : AmbienteConfig
     {
         public AppiumDriver<AndroidElement> driver { protected get; set; }
-        public WebDriverWait espera { protected get; set; } 
+        public WebDriverWait espera { protected get; set; }
 
         public Login()
         {
@@ -24,74 +27,53 @@ namespace FastTradeAndroid
             PageFactory.InitElements(driver, this);
         }
 
-        [FindsBy(How = How.Id, Using = "br.com.cedrotech.fastmobile:id/onboarding_market_button")]
-        IWebElement tipoLogin;
-
-        [FindsBy(How = How.Id, Using = "br.com.cedrotech.fastmobile:id/login_login_autoCompleteTextView")]
+        [FindsBy(How = How.Id, Using = "br.com.cedrotech.fastmobile:id/userNameEditText")]
         IWebElement campoLogin;
 
-        [FindsBy(How = How.Id, Using = "br.com.cedrotech.fastmobile:id/login_password_editText")]
+        [FindsBy(How = How.Id, Using = "br.com.cedrotech.fastmobile:id/passwordEditText")]
         IWebElement campoSenha;
 
-        [FindsBy(How = How.Id, Using = "br.com.cedrotech.fastmobile:id/login_signIn_button")]
+        [FindsBy(How = How.Id, Using = "br.com.cedrotech.fastmobile:id/loginButton")]
         IWebElement botaoLogin;
 
-        [FindsBy(How = How.Id, Using = "android:id/button1")]
-        IWebElement alertaAcessoInvalido;
+        [FindsBy(How = How.Id, Using = "br.com.cedrotech.fastmobile:id/skipFingerprint")]
+        IWebElement botaoDigitalDepois;
 
-        [FindsBy(How = How.ClassName, Using = "android.widget.ImageButton")]
-        IWebElement menuFast;
-
-        [FindsBy(How = How.Id, Using = "br.com.cedrotech.fastmobile:id/menu_logout")]
-        IWebElement botaoSair;
-
-        public void SuiteLoginLogof()
-        {
-            espera.Until(ExpectedConditions.ElementToBeClickable(tipoLogin));
-            tipoLogin.Click();
-
-            LoginIncorreto();
-            LoginCorreto();
-            Logof();
-        }
-
-        public void LoginIncorreto()
-        {
-            espera.Until(ExpectedConditions.ElementToBeClickable(campoLogin));
-            campoLogin.SendKeys("usuarioinvalido");
-            campoSenha.SendKeys("senhainvalida");
-            botaoLogin.Click();
-            espera.Until(ExpectedConditions.ElementToBeClickable(alertaAcessoInvalido));
-            Thread.Sleep(2000);
-            alertaAcessoInvalido.Click();
-        }
 
         public void LoginCorreto()
         {
+            espera.Until(ExpectedConditions.ElementToBeClickable(campoLogin));
             campoLogin.SendKeys("caiocosta");
+            driver.HideKeyboard();
+
+            espera.Until(ExpectedConditions.ElementToBeClickable(campoSenha));
             campoSenha.SendKeys("102030");
+            driver.HideKeyboard();
+
+            espera.Until(ExpectedConditions.ElementToBeClickable(botaoLogin));
             botaoLogin.Click();
-            Thread.Sleep(4000);
-        }
+            //espera.Until(ExpectedConditions.ElementToBeClickable(botaoDigitalDepois));
 
-        public void Logof()
-        {
-            espera.Until(ExpectedConditions.ElementToBeClickable(menuFast));
-            menuFast.Click();
+            Actions c = new Actions(driver);
 
-            espera.Until(ExpectedConditions.ElementToBeClickable(botaoSair));
-            botaoSair.Click();
-            driver.CloseApp();
-        }
+            //Thread.Sleep(2000);
 
-        public void LoginFluxoCompleto()
-        {
-            espera.Until(ExpectedConditions.ElementToBeClickable(tipoLogin));
-            tipoLogin.Click();
+            driver.FindElement(By.Id("android:id/content")).SendKeys(Keys.Down);
+            driver.FindElement(By.Id("android:id/content")).SendKeys(Keys.PageDown);
+            driver.FindElement(By.Id("android:id/content")).SendKeys(Keys.ArrowDown);
+            driver.FindElement(By.Id("android:id/content")).SendKeys(Keys.PageDown);            
+            c.ClickAndHold(driver.FindElement(By.Id("br.com.cedrotech.fastmobile:id/layoutConstraintUser"))).MoveByOffset(1,500);
 
-            campoLogin.SendKeys("caiocosta");
-            campoSenha.SendKeys("102030");
-            botaoLogin.Click();
+
+            //driver.FindElement(By.Id("br.com.cedrotech.fastmobile:id/elipse")).SendKeys(Keys.Down);
+
+            //Actions c = new Actions(driver);
+
+            //////c.ClickAndHold(simboloDigital).MoveByOffset(0, -500).Build().Perform();
+            //c.ClickAndHold().MoveByOffset(0, -300).Release().Perform();
+            ////Generic function for Scroll
+            ////TouchAction actions = new TouchAction(driver);
+            ////actions.Press(botaoDigitalDepois).Wait(5000).MoveTo().Release().Perform();
         }
     }
 }
