@@ -8,8 +8,8 @@
     <ProjectGuid>{30E1F39B-5475-49BB-99FF-C34CF7CBD7A9}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>FastTardeAndroid</RootNamespace>
-    <AssemblyName>FastTardeAndroid</AssemblyName>
+    <RootNamespace>FastTradeAndroid</RootNamespace>
+    <AssemblyName>FastTradeAndroid</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -28,7 +28,7 @@
     <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
+    <WarningLevel>0</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -66,8 +66,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AmbienteConfig.cs" />
-    <Compile Include="Ativos.cs" />
-    <Compile Include="Listas.cs" />
+    <Compile Include="Ativo.cs" />
     <Compile Include="Login.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
