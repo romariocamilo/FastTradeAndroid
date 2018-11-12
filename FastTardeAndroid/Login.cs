@@ -22,7 +22,7 @@ namespace FastTradeAndroid
 
         public Login()
         {
-            driver = Configuracao();
+            driver = Configuracao("br.com.cedrotech.fastmobile", "br.com.cedrotech.fastmobile.splash.SplashActivity");
             espera = new WebDriverWait(driver, TimeSpan.FromSeconds(20));
             PageFactory.InitElements(driver, this);
         }

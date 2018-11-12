@@ -19,11 +19,19 @@ namespace FastTradeAndroid
         }
 
         [TestMethod]
-        public void Ativo()
+        public void BuscaAtivo()
         {
             //Aqui ocorrem os testes de login incorreto, login correto e logof sem corretora
             Ativo oAtivo = new Ativo();
             oAtivo.PesquisaAtivo();
+        }
+
+        [TestMethod]
+        public void VisualizarSaldo()
+        {
+            //Aqui ocorrem os testes de login incorreto, login correto e logof sem corretora
+            Carteira oCarteira = new Carteira();
+            oCarteira.VisualizaSaldo();
         }
     }
 }

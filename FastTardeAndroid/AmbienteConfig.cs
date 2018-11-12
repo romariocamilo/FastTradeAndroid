@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium.Appium;
+﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.Android;
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Remote;
@@ -12,15 +13,13 @@ namespace FastTradeAndroid
 {
     class AmbienteConfig
     {
-        public AppiumDriver<AndroidElement> Configuracao()
+        public AppiumDriver<AndroidElement> Configuracao(string appPackage, string appActivity)
         {
             DesiredCapabilities capabilities = new DesiredCapabilities();
             AppiumDriver<AndroidElement> driver;
 
             string deviceName = "H9AZB600Z372GYZ";
             string platformDesktop = "Windows";
-            string appPackage = "br.com.cedrotech.fastmobile";
-            string appActivity = "br.com.cedrotech.fastmobile.splash.SplashActivity";
             string platFormNameTest = "Android";
             string automationName = "Appium";
 
