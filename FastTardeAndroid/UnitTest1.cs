@@ -11,7 +11,7 @@ namespace FastTradeAndroid
     public class UnitTest1
     {
         [TestMethod]
-        public void Login()
+        public void FluxoLogin()
         {
             //Aqui ocorrem os testes de login incorreto, login correto e logof sem corretora
             Login oLogin = new Login();
@@ -19,19 +19,27 @@ namespace FastTradeAndroid
         }
 
         [TestMethod]
-        public void BuscaAtivo()
+        public void FluxoPesquisaRapidoAtivo()
         {
             //Aqui ocorrem os testes de login incorreto, login correto e logof sem corretora
-            Ativo oAtivo = new Ativo();
-            oAtivo.PesquisaAtivo();
+            PesquisaAtivo oAtivo = new PesquisaAtivo();
+            oAtivo.FluxoPesquisaRapidoAtivo();
         }
 
         [TestMethod]
-        public void VisualizarSaldo()
+        public void FluxoVisualizaSaldo()
         {
             //Aqui ocorrem os testes de login incorreto, login correto e logof sem corretora
             Carteira oCarteira = new Carteira();
             oCarteira.VisualizaSaldo();
+        }
+
+        [TestMethod]
+        public void FluxoInserirNovaLista()
+        {
+            //Aqui ocorrem os testes de login incorreto, login correto e logof sem corretora
+            Cotacoes oCotacoes = new Cotacoes();
+            oCotacoes.FluxoInserirNovaLista();
         }
     }
 }

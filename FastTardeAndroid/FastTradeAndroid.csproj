@@ -66,8 +66,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AmbienteConfig.cs" />
-    <Compile Include="Ativo.cs" />
+    <Compile Include="PesquisaAtivo.cs" />
     <Compile Include="Carteira.cs" />
+    <Compile Include="Cotacoes.cs" />
     <Compile Include="Login.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

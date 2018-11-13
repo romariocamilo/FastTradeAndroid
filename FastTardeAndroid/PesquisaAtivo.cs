@@ -15,7 +15,7 @@ using System.Threading.Tasks;
 
 namespace FastTradeAndroid
 {
-    class Ativo : Login
+    class PesquisaAtivo : Login
     {
         [FindsBy(How = How.Id, Using = "br.com.cedrotech.fastmobile:id/searchMenu")]
         IWebElement iconePesquisaAtivo;
@@ -26,7 +26,7 @@ namespace FastTradeAndroid
         [FindsBy(How = How.XPath, Using = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup")]
         IWebElement frame;
 
-        public void PesquisaAtivo()
+        public void FluxoPesquisaRapidoAtivo()
         {
             LoginCorreto();
 
@@ -35,8 +35,10 @@ namespace FastTradeAndroid
 
             espera.Until(ExpectedConditions.ElementToBeClickable(campoPesquisaAtivo));
             campoPesquisaAtivo.SendKeys("PETR4");
+            Thread.Sleep(2000);
 
-
+            TouchAction acaoClique = new TouchAction(driver);
+            acaoClique.Tap(445, 474).Perform();
 
             #region OPÇÕES ANDERSON
             //driver.Keyboard.PressKey("VALE3");
@@ -54,10 +56,6 @@ namespace FastTradeAndroid
 
             #endregion
 
-            Thread.Sleep(2000);
-
-            TouchAction nova = new TouchAction(driver);
-            nova.Tap(445, 474).Perform();
         }
     }
 }
