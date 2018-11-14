@@ -66,10 +66,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AmbienteConfig.cs" />
-    <Compile Include="PesquisaAtivo.cs" />
+    <Compile Include="ConsultaRapida.cs" />
     <Compile Include="Carteira.cs" />
     <Compile Include="Cotacoes.cs" />
     <Compile Include="Login.cs" />
+    <Compile Include="Menu.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

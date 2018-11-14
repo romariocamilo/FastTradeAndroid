@@ -8,7 +8,47 @@ using OpenQA.Selenium.Remote;
 namespace FastTradeAndroid
 {
     [TestClass]
-    public class UnitTest1
+    public class PlanilhaCotacao
+    {
+        [TestMethod]
+        public void VisualizarPlanilhaCotacaoDetalhada()
+        {
+            Cotacoes oCotacoes = new Cotacoes();
+            oCotacoes.VisualizarPlanilhaCotacaoDetalhada();
+        }
+
+        [TestMethod]
+        public void VisualizarPlanilhaCotacaoResumida()
+        {
+            Cotacoes oCotacoes = new Cotacoes();
+            oCotacoes.VisualizarPlanilhaCotacaoResumida();
+        }
+
+        //Nesse cenário é necessário implementar o scroll para valida a planilha criada
+        [TestMethod]
+        public void AdicionarPlanilhaCotacao()
+        {
+            Cotacoes oCotacoes = new Cotacoes();
+            oCotacoes.AdicionarPlanilhaCotacao("Maiauma lista");
+        }
+
+        [TestMethod]
+        public void TrocaPlanilhaCotacao()
+        {
+            Cotacoes oCotacoes = new Cotacoes();
+            oCotacoes.TrocaPlanilhaCotacao("novaplanilhaparateste");
+        }
+
+        [TestMethod]
+        public void RenomearPlanilhaCotacao()
+        {
+            Cotacoes oCotacoes = new Cotacoes();
+            oCotacoes.RenomearPlanilhaCotacao("teste");
+        }
+    }
+
+    [TestClass]
+    public class UnitTest2
     {
         [TestMethod]
         public void FluxoLogin()
@@ -22,24 +62,17 @@ namespace FastTradeAndroid
         public void FluxoPesquisaRapidoAtivo()
         {
             //Aqui ocorrem os testes de login incorreto, login correto e logof sem corretora
-            PesquisaAtivo oAtivo = new PesquisaAtivo();
-            oAtivo.FluxoPesquisaRapidoAtivo();
+            ConsultaRapida oConsultaRapida = new ConsultaRapida();
+            oConsultaRapida.FluxoPesquisaRapidoAtivo("VULC3");
         }
 
+        //Carteira Ausente Fast 1.11
         [TestMethod]
         public void FluxoVisualizaSaldo()
         {
             //Aqui ocorrem os testes de login incorreto, login correto e logof sem corretora
             Carteira oCarteira = new Carteira();
             oCarteira.VisualizaSaldo();
-        }
-
-        [TestMethod]
-        public void FluxoInserirNovaLista()
-        {
-            //Aqui ocorrem os testes de login incorreto, login correto e logof sem corretora
-            Cotacoes oCotacoes = new Cotacoes();
-            oCotacoes.FluxoInserirNovaLista();
         }
     }
 }
