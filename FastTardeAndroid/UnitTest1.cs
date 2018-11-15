@@ -43,7 +43,7 @@ namespace FastTradeAndroid
         public void RenomearPlanilhaCotacao()
         {
             Cotacoes oCotacoes = new Cotacoes();
-            oCotacoes.RenomearPlanilhaCotacao("teste");
+            oCotacoes.RenomearPlanilhaCotacao("planilharomario");
         }
     }
 

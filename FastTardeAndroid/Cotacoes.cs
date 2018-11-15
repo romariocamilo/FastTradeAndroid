@@ -153,43 +153,30 @@ namespace FastTradeAndroid
         {
             LoginCorreto();
 
+            Thread.Sleep(1000);
+
             espera.Until(ExpectedConditions.ElementToBeClickable(btnExpandirListas));
             btnExpandirListas.Click();
 
             try
             {
-                //TouchAction novaAcao = new TouchAction(driver);
-                
-                //espera.Until(ExpectedConditions.ElementToBeClickable(segundaPlanilhaCotacao));
-                //segundaPlanilhaCotacao.Click();
-                //vaidarcerto.Click();
-                //novaAcao.LongPress(1000, 500).MoveTo(500, 500).Release().Perform();
-                // novaAcao.LongPress(vaidarcerto,500,500).Release().Perform();
-                vaidarcerto.Click();
-                //novaAcao.LongPress(vaidarcerto, 500, 500).Release().Perform();
-                //novaAcao.LongPress(1017,300).Release().Perform();
-
-                //(new TouchAction(driver)).tap(1017, 651)
-
+                espera.Until(ExpectedConditions.ElementToBeClickable(segundaPlanilhaCotacao));
+                segundaPlanilhaCotacao.Click();  
             }
             catch
             {
-                //TouchAction novaAcao = new TouchAction(driver);
+                espera.Until(ExpectedConditions.ElementToBeClickable(btnCriarNovaLista));
+                btnCriarNovaLista.Click();
 
-                //espera.Until(ExpectedConditions.ElementToBeClickable(btnCriarNovaLista));
-                //btnCriarNovaLista.Click();
+                espera.Until(ExpectedConditions.ElementToBeClickable(campoNomeNovaPlanilha));
+                campoNomeNovaPlanilha.SendKeys(nomeNovaPlanilha);
 
-                //espera.Until(ExpectedConditions.ElementToBeClickable(campoNomeNovaPlanilha));
-                //campoNomeNovaPlanilha.SendKeys(nomeNovaPlanilha);
+                espera.Until(ExpectedConditions.ElementToBeClickable(btnSalvar));
+                btnSalvar.Click();
 
-                //espera.Until(ExpectedConditions.ElementToBeClickable(btnSalvar));
-                //btnSalvar.Click();
+                espera.Until(ExpectedConditions.ElementToBeClickable(segundaPlanilhaCotacao));
+                segundaPlanilhaCotacao.Click();
 
-                //espera.Until(ExpectedConditions.ElementToBeClickable(segundaPlanilhaCotacao));
-                //segundaPlanilhaCotacao.Click();
-                //novaAcao.ClickAndHold(segundaPlanilhaCotacao).MoveByOffset(483, 483).Build();
-                //novaAcao.LongPress(1000, 500).MoveTo(500, 500).Release().Perform();
-               
                 //500 500 destino
             }
         }
