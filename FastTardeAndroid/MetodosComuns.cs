@@ -12,7 +12,7 @@ namespace FastTradeAndroid
 {
     class MetodosComuns : AmbienteConfig
     {
-        public void LongPressFrameAtual(AppiumDriver<AndroidElement> driver, int posicaoOrigemX = 0, int posicaoOrigemY = 0, int posicaoDestinoX = 0, int posicaoDestinoY = 0)
+        public void LongPressPosicoesFixas(AppiumDriver<AndroidElement> driver, int posicaoOrigemX = 0, int posicaoOrigemY = 0, int posicaoDestinoX = 0, int posicaoDestinoY = 0)
         {
             TouchAction touchAction = new TouchAction(driver);
             touchAction
@@ -23,7 +23,7 @@ namespace FastTradeAndroid
             .Perform();
         }
 
-        public void LongPressFrameDirecao(AppiumDriver<AndroidElement> driver, IWebElement elemento, bool eixoX, bool positivo, int quantidade)
+        public void LongPressPorElemento(AppiumDriver<AndroidElement> driver, IWebElement elemento, bool eixoX, bool positivo, int quantidade)
         {
             TouchAction touchAction = new TouchAction(driver);
 

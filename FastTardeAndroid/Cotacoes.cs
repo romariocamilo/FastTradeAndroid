@@ -173,7 +173,7 @@ namespace FastTradeAndroid
             try
             {
                 espera.Until(ExpectedConditions.ElementToBeClickable(segundaPlanilhaCotacao));
-                oMetodosComuns.LongPressFrameDirecao(driver, segundaPlanilhaCotacao, true, false, 50);
+                oMetodosComuns.LongPressPorElemento(driver, segundaPlanilhaCotacao, true, false, 50);
 
                 espera.Until(ExpectedConditions.ElementToBeClickable(btnRenomearPlanilha));
                 btnRenomearPlanilha.Click();
@@ -196,7 +196,7 @@ namespace FastTradeAndroid
                 btnSalvar.Click();
 
                 espera.Until(ExpectedConditions.ElementToBeClickable(segundaPlanilhaCotacao));
-                oMetodosComuns.LongPressFrameDirecao(driver, segundaPlanilhaCotacao, true, false, 50);
+                oMetodosComuns.LongPressPorElemento(driver, segundaPlanilhaCotacao, true, false, 50);
 
                 espera.Until(ExpectedConditions.ElementToBeClickable(btnRenomearPlanilha));
                 btnRenomearPlanilha.Click();
@@ -224,7 +224,7 @@ namespace FastTradeAndroid
             try
             {
                 espera.Until(ExpectedConditions.ElementToBeClickable(segundaPlanilhaCotacao));
-                oMetodosComuns.LongPressFrameDirecao(driver, segundaPlanilhaCotacao, true, false, 50);
+                oMetodosComuns.LongPressPorElemento(driver, segundaPlanilhaCotacao, true, false, 50);
 
                 espera.Until(ExpectedConditions.ElementToBeClickable(btnExcluirPlanilha));
                 btnExcluirPlanilha.Click();
@@ -251,7 +251,7 @@ namespace FastTradeAndroid
                 btnSalvar.Click();
 
                 espera.Until(ExpectedConditions.ElementToBeClickable(segundaPlanilhaCotacao));
-                oMetodosComuns.LongPressFrameDirecao(driver, segundaPlanilhaCotacao, true, false, 50);
+                oMetodosComuns.LongPressPorElemento(driver, segundaPlanilhaCotacao, true, false, 50);
 
                 espera.Until(ExpectedConditions.ElementToBeClickable(btnExcluirPlanilha));
                 btnExcluirPlanilha.Click();
@@ -298,7 +298,7 @@ namespace FastTradeAndroid
 
 
             espera.Until(ExpectedConditions.ElementToBeClickable(ativoRemovido));
-            oMetodosComuns.LongPressFrameDirecao(driver, ativoRemovido, true, false, 20);
+            oMetodosComuns.LongPressPosicoesFixas(driver, 950, 760, 200, 760);
         }
 
         //Acesso aos demais menus do sistema
