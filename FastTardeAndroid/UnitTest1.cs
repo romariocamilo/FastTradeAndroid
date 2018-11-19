@@ -29,21 +29,42 @@ namespace FastTradeAndroid
         public void AdicionarPlanilhaCotacao()
         {
             Cotacoes oCotacoes = new Cotacoes();
-            oCotacoes.AdicionarPlanilhaCotacao("Maiauma lista");
+            oCotacoes.AdicionarPlanilhaCotacao("ListaAdicionada");
         }
 
         [TestMethod]
         public void TrocaPlanilhaCotacao()
         {
             Cotacoes oCotacoes = new Cotacoes();
-            oCotacoes.TrocaPlanilhaCotacao("novaplanilhaparateste");
+            oCotacoes.TrocaPlanilhaCotacao("PlanilhaAlterada");
         }
 
         [TestMethod]
         public void RenomearPlanilhaCotacao()
         {
             Cotacoes oCotacoes = new Cotacoes();
-            oCotacoes.RenomearPlanilhaCotacao("planilharomario");
+            oCotacoes.RenomearPlanilhaCotacao("NovaPlanilha", "PlanilhaRenomeada");
+        }
+
+        [TestMethod]
+        public void ExcluirPlanilhaCotacao()
+        {
+            Cotacoes oCotacoes = new Cotacoes();
+            oCotacoes.ExcluirPlanilhaCotacao("PlanilhaParaExcluir");
+        }
+
+        [TestMethod]
+        public void AdicionaAtivosPlanilha()
+        {
+            Cotacoes oCotacoes = new Cotacoes();
+            oCotacoes.AdicionaAtivosPlanilha();
+        }
+
+        [TestMethod]
+        public void ExcluirAtivoPlanilha()
+        {
+            Cotacoes oCotacoes = new Cotacoes();
+            oCotacoes.ExcluirAtivoPlanilha();
         }
     }
 

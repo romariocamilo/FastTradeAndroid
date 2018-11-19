@@ -71,6 +71,7 @@
     <Compile Include="Cotacoes.cs" />
     <Compile Include="Login.cs" />
     <Compile Include="Menu.cs" />
+    <Compile Include="MetodosComuns.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

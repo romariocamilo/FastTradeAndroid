@@ -33,5 +33,11 @@ namespace FastTradeAndroid
             driver = new AndroidDriver<AndroidElement>(new Uri("http://localhost:4723/wd/hub"), capabilities, TimeSpan.FromSeconds(120));
             return driver;
         }
+
+        //public enum ScrollDirection
+        //{
+        //    Horizontal = 0,
+        //    Vertical = 1
+        //}
     }
 }
