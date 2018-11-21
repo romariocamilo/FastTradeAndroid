@@ -95,6 +95,9 @@ namespace FastTradeAndroid
         #region Elementos para excluir ativo da planilha
         [FindsBy(How = How.XPath, Using = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout[1]/android.view.ViewGroup/android.view.ViewGroup[2]/android.support.v7.widget.RecyclerView/android.view.ViewGroup[1]/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup")]
         IWebElement ativoRemovido;
+
+        [FindsBy(How = How.Id, Using = "br.com.cedrotech.fastmobile:id/floatingActionButtonDelete")]
+        IWebElement btnExcluirAtivo;
         #endregion
 
         public void VisualizarPlanilhaCotacaoDetalhada()
@@ -270,7 +273,10 @@ namespace FastTradeAndroid
 
         public void AdicionaAtivosPlanilha()
         {
-            LoginCorreto();
+            AdicionarPlanilhaCotacao("PLANILHA PARA INSERIR ATIVOS");
+
+            espera.Until(ExpectedConditions.ElementToBeClickable(segundaPlanilhaCotacao));
+            segundaPlanilhaCotacao.Click();
 
             //Ciclo para adicionar ativos
             espera.Until(ExpectedConditions.ElementToBeClickable(btnAdicionaAtivo));
@@ -285,20 +291,44 @@ namespace FastTradeAndroid
         }
 
         //ESSA OPÇÃO AINDA NÃO ESTA DISPONÍVEL NO APP
-        public void ReordenaAtivosPlanilha()
-        {
-            //ESSA OPÇÃO AINDA NÃO ESTA DISPONÍVEL NO APP
-        }
+        //public void ReordenaAtivosPlanilha()
+        //{
+        //    //ESSA OPÇÃO AINDA NÃO ESTA DISPONÍVEL NO APP
+        //}
 
         public void ExcluirAtivoPlanilha()
         {
             MetodosComuns oMetodosComuns = new MetodosComuns();
-            TouchAction novaAcao = new TouchAction(driver);
-            LoginCorreto();
 
+            try
+            {
+                LoginCorreto();
 
-            espera.Until(ExpectedConditions.ElementToBeClickable(ativoRemovido));
-            oMetodosComuns.LongPressPosicoesFixas(driver, 950, 760, 200, 760);
+                Thread.Sleep(2000);
+                espera.Until(ExpectedConditions.ElementToBeClickable(ativoRemovido));
+                oMetodosComuns.LongPressPosicoesFixas(driver, 950, 760, 200, 760);
+
+                espera.Until(ExpectedConditions.ElementToBeClickable(btnExcluirAtivo));
+                btnExcluirAtivo.Click();
+            }
+            catch
+            {
+                espera.Until(ExpectedConditions.ElementToBeClickable(btnAdicionaAtivo));
+                btnAdicionaAtivo.Click();
+
+                SelecionaAtivo("PETR4", ativoPetr4);
+
+                espera.Until(ExpectedConditions.ElementToBeClickable(btnAdicionaAtivoDaLista));
+                btnAdicionaAtivoDaLista.Click();
+
+                Thread.Sleep(2000);
+
+                espera.Until(ExpectedConditions.ElementToBeClickable(ativoRemovido));
+                oMetodosComuns.LongPressPosicoesFixas(driver, 950, 760, 200, 760);
+
+                espera.Until(ExpectedConditions.ElementToBeClickable(btnExcluirAtivo));
+                btnExcluirAtivo.Click();
+            }
         }
 
         //Acesso aos demais menus do sistema

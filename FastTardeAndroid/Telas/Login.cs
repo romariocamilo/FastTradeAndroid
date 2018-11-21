@@ -55,10 +55,6 @@ namespace FastTradeAndroid
 
             espera.Until(ExpectedConditions.ElementToBeClickable(botaoDigitalDepois));
             botaoDigitalDepois.Click();
-
-            //RESOLUÇÃO DO ANDERSON - CRIANDO PROPRIO SCROLL
-            //driver.FindElement(MobileBy.AndroidUIAutomator("new UiScrollable(new UiSelector().scrollable(true)).scrollIntoView(new UiSelector().resourceId(android:id/content))"));
-            //driver.FindElement(MobileBy.AndroidUIAutomator("new UiScrollable(new UiSelector().scrollable(true).instance(0)).flingToEnd(1)"));
         }
     }
 }

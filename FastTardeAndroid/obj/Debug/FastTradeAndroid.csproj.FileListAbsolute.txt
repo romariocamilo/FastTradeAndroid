@@ -4,6 +4,8 @@ C:\FastTradeAndroid\FastTardeAndroid\bin\Debug\Microsoft.VisualStudio.TestPlatfo
 C:\FastTradeAndroid\FastTardeAndroid\bin\Debug\pt\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.resources.dll
 C:\FastTradeAndroid\FastTardeAndroid\bin\Debug\pt\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.resources.dll
 C:\FastTradeAndroid\FastTardeAndroid\bin\Debug\pt\Microsoft.VisualStudio.TestPlatform.TestFramework.resources.dll
+C:\FastTradeAndroid\FastTardeAndroid\bin\Debug\FastTradeAndroid.dll
+C:\FastTradeAndroid\FastTardeAndroid\bin\Debug\FastTradeAndroid.pdb
 C:\FastTradeAndroid\FastTardeAndroid\bin\Debug\appium-dotnet-driver.dll
 C:\FastTradeAndroid\FastTardeAndroid\bin\Debug\Castle.Core.dll
 C:\FastTradeAndroid\FastTardeAndroid\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
@@ -21,7 +23,5 @@ C:\FastTradeAndroid\FastTardeAndroid\bin\Debug\WebDriver.Support.xml
 C:\FastTradeAndroid\FastTardeAndroid\obj\Debug\FastTradeAndroid.csprojAssemblyReference.cache
 C:\FastTradeAndroid\FastTardeAndroid\obj\Debug\FastTradeAndroid.csproj.CoreCompileInputs.cache
 C:\FastTradeAndroid\FastTardeAndroid\obj\Debug\FastTradeAndroid.csproj.CopyComplete
-C:\FastTradeAndroid\FastTardeAndroid\bin\Debug\FastTradeAndroid.dll
-C:\FastTradeAndroid\FastTardeAndroid\bin\Debug\FastTradeAndroid.pdb
 C:\FastTradeAndroid\FastTardeAndroid\obj\Debug\FastTradeAndroid.dll
 C:\FastTradeAndroid\FastTardeAndroid\obj\Debug\FastTradeAndroid.pdb
