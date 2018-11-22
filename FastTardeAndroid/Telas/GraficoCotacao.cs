@@ -81,53 +81,46 @@ namespace FastTradeAndroid.Telas
                 btnAtivoLista.Click();
 
                 //Verificando gráfico do ativo em linha
-                Thread.Sleep(1000);
+                Thread.Sleep(3000);
                 espera.Until(ExpectedConditions.ElementToBeClickable(btnUmDia));
                 btnUmDia.Click();
 
-                Thread.Sleep(1000);
+                Thread.Sleep(3000);
                 espera.Until(ExpectedConditions.ElementToBeClickable(btnQuinzeDias));
                 btnQuinzeDias.Click();
 
-                Thread.Sleep(1000);
+                Thread.Sleep(3000);
                 espera.Until(ExpectedConditions.ElementToBeClickable(btnSeisMeses));
                 btnSeisMeses.Click();
 
-                Thread.Sleep(1000);
+                Thread.Sleep(3000);
                 espera.Until(ExpectedConditions.ElementToBeClickable(btnUmAno));
                 btnUmAno.Click();
 
                 //Verificando gráfico do ativo em coluna
-                Thread.Sleep(1000);
+                Thread.Sleep(3000);
                 espera.Until(ExpectedConditions.ElementToBeClickable(btnGraficoColuna));
                 btnGraficoColuna.Click();
 
-                Thread.Sleep(1000);
+                Thread.Sleep(3000);
                 espera.Until(ExpectedConditions.ElementToBeClickable(btnUmDia));
                 btnUmDia.Click();
 
-                Thread.Sleep(1000);
+                Thread.Sleep(3000);
                 espera.Until(ExpectedConditions.ElementToBeClickable(btnQuinzeDias));
                 btnQuinzeDias.Click();
 
-                Thread.Sleep(1000);
+                Thread.Sleep(3000);
                 espera.Until(ExpectedConditions.ElementToBeClickable(btnSeisMeses));
                 btnSeisMeses.Click();
 
-                Thread.Sleep(1000);
+                Thread.Sleep(3000);
                 espera.Until(ExpectedConditions.ElementToBeClickable(btnUmAno));
                 btnUmAno.Click();
 
                 espera.Until(ExpectedConditions.ElementToBeClickable(btnFecharGrafico));
                 btnFecharGrafico.Click();
 
-                Thread.Sleep(2000);
-
-                espera.Until(ExpectedConditions.ElementToBeClickable(ativoRemovido));
-                oMetodosComuns.LongPressPosicoesFixas(driver, 950, 760, 200, 760);
-
-                espera.Until(ExpectedConditions.ElementToBeClickable(btnExcluirAtivo));
-                btnExcluirAtivo.Click();
             }
             catch
             {
@@ -144,53 +137,46 @@ namespace FastTradeAndroid.Telas
                 btnAtivoLista.Click();
 
                 //Verificando gráfico do ativo em linha
-                Thread.Sleep(1000);
+                Thread.Sleep(3000);
                 espera.Until(ExpectedConditions.ElementToBeClickable(btnUmDia));
                 btnUmDia.Click();
 
-                Thread.Sleep(1000);
+                Thread.Sleep(3000);
                 espera.Until(ExpectedConditions.ElementToBeClickable(btnQuinzeDias));
                 btnQuinzeDias.Click();
 
-                Thread.Sleep(1000);
+                Thread.Sleep(3000);
                 espera.Until(ExpectedConditions.ElementToBeClickable(btnSeisMeses));
                 btnSeisMeses.Click();
 
-                Thread.Sleep(1000);
+                Thread.Sleep(3000);
                 espera.Until(ExpectedConditions.ElementToBeClickable(btnUmAno));
                 btnUmAno.Click();
 
                 //Verificando gráfico do ativo em coluna
-                Thread.Sleep(1000);
+                Thread.Sleep(3000);
                 espera.Until(ExpectedConditions.ElementToBeClickable(btnGraficoColuna));
                 btnGraficoColuna.Click();
 
-                Thread.Sleep(1000);
+                Thread.Sleep(3000);
                 espera.Until(ExpectedConditions.ElementToBeClickable(btnUmDia));
                 btnUmDia.Click();
 
-                Thread.Sleep(1000);
+                Thread.Sleep(3000);
                 espera.Until(ExpectedConditions.ElementToBeClickable(btnQuinzeDias));
                 btnQuinzeDias.Click();
 
-                Thread.Sleep(1000);
+                Thread.Sleep(3000);
                 espera.Until(ExpectedConditions.ElementToBeClickable(btnSeisMeses));
                 btnSeisMeses.Click();
 
-                Thread.Sleep(1000);
+                Thread.Sleep(3000);
                 espera.Until(ExpectedConditions.ElementToBeClickable(btnUmAno));
                 btnUmAno.Click();
 
                 espera.Until(ExpectedConditions.ElementToBeClickable(btnFecharGrafico));
                 btnFecharGrafico.Click();
 
-                Thread.Sleep(2000);
-
-                espera.Until(ExpectedConditions.ElementToBeClickable(ativoRemovido));
-                oMetodosComuns.LongPressPosicoesFixas(driver, 950, 760, 200, 760);
-
-                espera.Until(ExpectedConditions.ElementToBeClickable(btnExcluirAtivo));
-                btnExcluirAtivo.Click();
             }
         }
 
@@ -205,48 +191,51 @@ namespace FastTradeAndroid.Telas
                 espera.Until(ExpectedConditions.ElementToBeClickable(btnAtivoLista));
                 btnAtivoLista.Click();
 
+                espera.Until(ExpectedConditions.ElementToBeClickable(btnExpandirGrafico));
+                btnExpandirGrafico.Click();
+
                 //Verificando gráfico do ativo em linha
-                Thread.Sleep(1000);
+                Thread.Sleep(3000);
                 espera.Until(ExpectedConditions.ElementToBeClickable(btnUmDia));
                 btnUmDia.Click();
 
-                Thread.Sleep(1000);
+                Thread.Sleep(3000);
                 espera.Until(ExpectedConditions.ElementToBeClickable(btnQuinzeDias));
                 btnQuinzeDias.Click();
 
-                Thread.Sleep(1000);
+                Thread.Sleep(3000);
                 espera.Until(ExpectedConditions.ElementToBeClickable(btnSeisMeses));
                 btnSeisMeses.Click();
 
-                Thread.Sleep(1000);
+                Thread.Sleep(3000);
                 espera.Until(ExpectedConditions.ElementToBeClickable(btnUmAno));
                 btnUmAno.Click();
 
                 //Verificando gráfico do ativo em coluna
-                Thread.Sleep(1000);
+                Thread.Sleep(3000);
                 espera.Until(ExpectedConditions.ElementToBeClickable(btnGraficoColuna));
                 btnGraficoColuna.Click();
 
-                Thread.Sleep(1000);
+                Thread.Sleep(3000);
                 espera.Until(ExpectedConditions.ElementToBeClickable(btnUmDia));
                 btnUmDia.Click();
 
-                Thread.Sleep(1000);
+                Thread.Sleep(3000);
                 espera.Until(ExpectedConditions.ElementToBeClickable(btnQuinzeDias));
                 btnQuinzeDias.Click();
 
-                Thread.Sleep(1000);
+                Thread.Sleep(3000);
                 espera.Until(ExpectedConditions.ElementToBeClickable(btnSeisMeses));
                 btnSeisMeses.Click();
 
-                Thread.Sleep(1000);
+                Thread.Sleep(3000);
                 espera.Until(ExpectedConditions.ElementToBeClickable(btnUmAno));
                 btnUmAno.Click();
 
                 espera.Until(ExpectedConditions.ElementToBeClickable(btnFecharGrafico));
                 btnFecharGrafico.Click();
 
-                Thread.Sleep(2000);
+                Thread.Sleep(3000);
 
                 espera.Until(ExpectedConditions.ElementToBeClickable(ativoRemovido));
                 oMetodosComuns.LongPressPosicoesFixas(driver, 950, 760, 200, 760);
@@ -272,47 +261,47 @@ namespace FastTradeAndroid.Telas
                 btnExpandirGrafico.Click();
 
                 //Verificando gráfico do ativo em linha
-                Thread.Sleep(1000);
+                Thread.Sleep(3000);
                 espera.Until(ExpectedConditions.ElementToBeClickable(btnUmDia));
                 btnUmDia.Click();
 
-                Thread.Sleep(1000);
+                Thread.Sleep(3000);
                 espera.Until(ExpectedConditions.ElementToBeClickable(btnQuinzeDias));
                 btnQuinzeDias.Click();
 
-                Thread.Sleep(1000);
+                Thread.Sleep(3000);
                 espera.Until(ExpectedConditions.ElementToBeClickable(btnSeisMeses));
                 btnSeisMeses.Click();
 
-                Thread.Sleep(1000);
+                Thread.Sleep(3000);
                 espera.Until(ExpectedConditions.ElementToBeClickable(btnUmAno));
                 btnUmAno.Click();
 
                 //Verificando gráfico do ativo em coluna
-                Thread.Sleep(1000);
+                Thread.Sleep(3000);
                 espera.Until(ExpectedConditions.ElementToBeClickable(btnGraficoColuna));
                 btnGraficoColuna.Click();
 
-                Thread.Sleep(1000);
+                Thread.Sleep(3000);
                 espera.Until(ExpectedConditions.ElementToBeClickable(btnUmDia));
                 btnUmDia.Click();
 
-                Thread.Sleep(1000);
+                Thread.Sleep(3000);
                 espera.Until(ExpectedConditions.ElementToBeClickable(btnQuinzeDias));
                 btnQuinzeDias.Click();
 
-                Thread.Sleep(1000);
+                Thread.Sleep(3000);
                 espera.Until(ExpectedConditions.ElementToBeClickable(btnSeisMeses));
                 btnSeisMeses.Click();
 
-                Thread.Sleep(1000);
+                Thread.Sleep(3000);
                 espera.Until(ExpectedConditions.ElementToBeClickable(btnUmAno));
                 btnUmAno.Click();
 
                 espera.Until(ExpectedConditions.ElementToBeClickable(btnFecharGrafico));
                 btnFecharGrafico.Click();
 
-                Thread.Sleep(2000);
+                Thread.Sleep(3000);
 
                 espera.Until(ExpectedConditions.ElementToBeClickable(ativoRemovido));
                 oMetodosComuns.LongPressPosicoesFixas(driver, 950, 760, 200, 760);

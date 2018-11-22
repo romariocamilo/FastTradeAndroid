@@ -16,17 +16,6 @@ namespace FastTradeAndroid
 {
     class Cotacoes : Login
     {
-        #region Menus
-        [FindsBy(How = How.Id, Using = "br.com.cedrotech.fastmobile:id/navigationQuotations")]
-        IWebElement menuCotacao;
-
-        [FindsBy(How = How.Id, Using = "br.com.cedrotech.fastmobile:id/navigationNews")]
-        IWebElement menuNoticia;
-
-        [FindsBy(How = How.Id, Using = "br.com.cedrotech.fastmobile:id/navigationMenu")]
-        IWebElement menuMenu;
-        #endregion
-
         #region Tipo De Cotações
         [FindsBy(How = How.Id, Using = "br.com.cedrotech.fastmobile:id/fullView")]
         IWebElement cotacaoCompleta;
@@ -50,6 +39,11 @@ namespace FastTradeAndroid
         #endregion
 
         #region Elemento para alteração da planilha de cotação
+
+        [FindsBy(How = How.Id, Using = "br.com.cedrotech.fastmobile:id/recyclerListUser")]
+        IWebElement frameListaDePlanilhasDeCotacao;
+        
+
         [FindsBy(How = How.XPath, Using = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.support.v7.widget.RecyclerView/android.widget.FrameLayout[1]/android.view.ViewGroup")]
         IWebElement segundaPlanilhaCotacao;
 
@@ -120,6 +114,8 @@ namespace FastTradeAndroid
         {
             LoginCorreto();
 
+            Thread.Sleep(3000);
+
             espera.Until(ExpectedConditions.ElementToBeClickable(btnExpandirListas));
             btnExpandirListas.Click();
 
@@ -133,9 +129,12 @@ namespace FastTradeAndroid
             btnSalvar.Click();
         }
 
-        public void TrocaPlanilhaCotacao(string nomeNovaPlanilha)
+        //var lista OK
+        public void TrocaPlanilhaCotacao(string nomePlanilha)
         {
             LoginCorreto();
+
+            Thread.Sleep(3000);   
 
             espera.Until(ExpectedConditions.ElementToBeClickable(btnExpandirListas));
             btnExpandirListas.Click();
@@ -143,7 +142,12 @@ namespace FastTradeAndroid
             try
             {
                 espera.Until(ExpectedConditions.ElementToBeClickable(segundaPlanilhaCotacao));
-                segundaPlanilhaCotacao.Click();
+
+                var listaDePlanilhas = driver.FindElementsById("br.com.cedrotech.fastmobile:id/listName");
+                var planilhaInserida = listaDePlanilhas.FirstOrDefault(p => p.Text == nomePlanilha.ToUpperInvariant());
+
+                espera.Until(ExpectedConditions.ElementToBeClickable(planilhaInserida));
+                planilhaInserida.Click();
             }
             catch
             {
@@ -151,23 +155,28 @@ namespace FastTradeAndroid
                 btnCriarNovaLista.Click();
 
                 espera.Until(ExpectedConditions.ElementToBeClickable(campoNomeNovaPlanilha));
-                campoNomeNovaPlanilha.SendKeys(nomeNovaPlanilha);
+                campoNomeNovaPlanilha.SendKeys(nomePlanilha);
 
                 espera.Until(ExpectedConditions.ElementToBeClickable(btnSalvar));
                 btnSalvar.Click();
 
                 espera.Until(ExpectedConditions.ElementToBeClickable(segundaPlanilhaCotacao));
-                segundaPlanilhaCotacao.Click();
+
+                var listaDePlanilhas = driver.FindElementsById("br.com.cedrotech.fastmobile:id/listName");
+                var planilhaInserida = listaDePlanilhas.FirstOrDefault(p => p.Text == nomePlanilha.ToUpperInvariant());
+
+                espera.Until(ExpectedConditions.ElementToBeClickable(planilhaInserida));
+                planilhaInserida.Click();
             }
 
         }
 
-        public void RenomearPlanilhaCotacao(string nomeNovaPlanilha, string nomeAlteradoPlanilha)
+        public void RenomearPlanilhaCotacao(string planilhaParaRenomear, string novoNomeDaPlanilha)
         {
             MetodosComuns oMetodosComuns = new MetodosComuns();
             LoginCorreto();
 
-            Thread.Sleep(2000);
+            Thread.Sleep(3000);
 
             espera.Until(ExpectedConditions.ElementToBeClickable(btnExpandirListas));
             btnExpandirListas.Click();
@@ -182,7 +191,7 @@ namespace FastTradeAndroid
                 btnRenomearPlanilha.Click();
 
                 espera.Until(ExpectedConditions.ElementToBeClickable(campoNomeNovaPlanilha));
-                campoNomeNovaPlanilha.SendKeys(nomeAlteradoPlanilha);
+                campoNomeNovaPlanilha.SendKeys(novoNomeDaPlanilha);
 
                 espera.Until(ExpectedConditions.ElementToBeClickable(btnSalvar));
                 btnSalvar.Click();
@@ -193,7 +202,7 @@ namespace FastTradeAndroid
                 btnCriarNovaLista.Click();
 
                 espera.Until(ExpectedConditions.ElementToBeClickable(campoNomeNovaPlanilha));
-                campoNomeNovaPlanilha.SendKeys(nomeNovaPlanilha);
+                campoNomeNovaPlanilha.SendKeys(planilhaParaRenomear);
 
                 espera.Until(ExpectedConditions.ElementToBeClickable(btnSalvar));
                 btnSalvar.Click();
@@ -205,7 +214,7 @@ namespace FastTradeAndroid
                 btnRenomearPlanilha.Click();
 
                 espera.Until(ExpectedConditions.ElementToBeClickable(campoNomeNovaPlanilha));
-                campoNomeNovaPlanilha.SendKeys(nomeAlteradoPlanilha);
+                campoNomeNovaPlanilha.SendKeys(novoNomeDaPlanilha);
 
                 espera.Until(ExpectedConditions.ElementToBeClickable(btnSalvar));
                 btnSalvar.Click();
@@ -218,7 +227,7 @@ namespace FastTradeAndroid
             TouchAction novaAcao = new TouchAction(driver);
             LoginCorreto();
 
-            Thread.Sleep(1000);
+            Thread.Sleep(3000);
 
             espera.Until(ExpectedConditions.ElementToBeClickable(btnExpandirListas));
             btnExpandirListas.Click();
@@ -237,6 +246,7 @@ namespace FastTradeAndroid
 
                 //Aqui o sistema não estava encontranto o elemento btnExcluirPlanilha por esse motivo fiz clica na tela
                 Thread.Sleep(1000);
+
                 novaAcao.Tap(925, 504, 2).Perform();
 
                 espera.Until(ExpectedConditions.ElementToBeClickable(btnConfirmacaoExclusaoSim));
@@ -271,12 +281,15 @@ namespace FastTradeAndroid
             }
         }
 
-        public void AdicionaAtivosPlanilha()
+        //var Lista OK
+        public void AdicionaAtivosPlanilha(string nomePlanilha)
         {
-            AdicionarPlanilhaCotacao("PLANILHA PARA INSERIR ATIVOS");
-
-            espera.Until(ExpectedConditions.ElementToBeClickable(segundaPlanilhaCotacao));
-            segundaPlanilhaCotacao.Click();
+            AdicionarPlanilhaCotacao(nomePlanilha);
+            
+            var listaDePlanilhas = driver.FindElementsById("br.com.cedrotech.fastmobile:id/listName");
+       
+            var planilhaInserida = listaDePlanilhas.FirstOrDefault(p => p.Text == nomePlanilha.ToUpperInvariant());
+            planilhaInserida.Click();
 
             //Ciclo para adicionar ativos
             espera.Until(ExpectedConditions.ElementToBeClickable(btnAdicionaAtivo));
@@ -329,25 +342,6 @@ namespace FastTradeAndroid
                 espera.Until(ExpectedConditions.ElementToBeClickable(btnExcluirAtivo));
                 btnExcluirAtivo.Click();
             }
-        }
-
-        //Acesso aos demais menus do sistema
-        public void AcessarMenuCotações()
-        {
-            espera.Until(ExpectedConditions.ElementToBeClickable(menuCotacao));
-            menuCotacao.Click();
-        }
-
-        public void AcessarMenuNoticias()
-        {
-            espera.Until(ExpectedConditions.ElementToBeClickable(menuNoticia));
-            menuNoticia.Click();
-        }
-
-        public void AcessarMenuMenu()
-        {
-            espera.Until(ExpectedConditions.ElementToBeClickable(menuMenu));
-            menuMenu.Click();
         }
 
         //Esse método é usado para adicionar novos ativos.

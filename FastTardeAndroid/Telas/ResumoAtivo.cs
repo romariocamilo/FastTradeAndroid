@@ -20,14 +20,14 @@ namespace FastTradeAndroid.Telas
         [FindsBy(How = How.Id, Using = "br.com.cedrotech.fastmobile:id/autocompleteQuotation")]
         IWebElement campoPesquisaAtivo;
 
-        [FindsBy(How = How.XPath, Using = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.support.v7.widget.RecyclerView/android.view.ViewGroup[2]/android.widget.ImageView")]
-        IWebElement ativoPetr4;
+        [FindsBy(How = How.XPath, Using = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.support.v7.widget.RecyclerView/android.view.ViewGroup[1]/android.widget.ImageView")]
+        IWebElement primeiroElementoDaPesquisa;
 
         [FindsBy(How = How.Id, Using = "br.com.cedrotech.fastmobile:id/floatingActionButtonAddQuote")]
         IWebElement btnAdicionaAtivoDaLista;
 
         [FindsBy(How = How.Id, Using = "br.com.cedrotech.fastmobile:id/quoteSimbol")]
-        IWebElement btnAtivoLista;
+        IWebElement ativosDaPlanilha;
 
         #endregion
 
@@ -41,7 +41,7 @@ namespace FastTradeAndroid.Telas
 
         #endregion
 
-        public void AcessoResumoAtivo()
+        public void AcessoResumoAtivo(string simboloDoAtivo)
         {
             MetodosComuns oMetodosComuns = new MetodosComuns();
 
@@ -49,38 +49,30 @@ namespace FastTradeAndroid.Telas
             {
                 LoginCorreto();
 
-                espera.Until(ExpectedConditions.ElementToBeClickable(btnAtivoLista));
-                btnAtivoLista.Click();
+                espera.Until(ExpectedConditions.ElementToBeClickable(ativosDaPlanilha));
 
-                //Thread.Sleep(2000);
+                var listraDeAtivosDisponiveis = driver.FindElementsById("br.com.cedrotech.fastmobile:id/quoteSimbol");
 
-                //espera.Until(ExpectedConditions.ElementToBeClickable(ativoRemovido));
-                //oMetodosComuns.LongPressPosicoesFixas(driver, 950, 760, 200, 760);
-
-                //espera.Until(ExpectedConditions.ElementToBeClickable(btnExcluirAtivo));
-                //btnExcluirAtivo.Click();
+                var ativoSelecionado = listraDeAtivosDisponiveis.FirstOrDefault(p => p.Text == simboloDoAtivo.ToUpperInvariant());
+                ativoSelecionado.Click();
             }
             catch
             {
-                ////Inserindo ativo
-                //espera.Until(ExpectedConditions.ElementToBeClickable(btnAdicionaAtivo));
-                //btnAdicionaAtivo.Click();
+                //Inserindo ativo
+                espera.Until(ExpectedConditions.ElementToBeClickable(btnAdicionaAtivo));
+                btnAdicionaAtivo.Click();
 
-                //SelecionaAtivo("Petr4", ativoPetr4);
+                SelecionaAtivo(simboloDoAtivo, primeiroElementoDaPesquisa);
 
-                //espera.Until(ExpectedConditions.ElementToBeClickable(btnAdicionaAtivoDaLista));
-                //btnAdicionaAtivoDaLista.Click();
+                espera.Until(ExpectedConditions.ElementToBeClickable(btnAdicionaAtivoDaLista));
+                btnAdicionaAtivoDaLista.Click();
 
-                //espera.Until(ExpectedConditions.ElementToBeClickable(btnAtivoLista));
-                //btnAtivoLista.Click();
+                espera.Until(ExpectedConditions.ElementToBeClickable(ativosDaPlanilha));
 
-                //Thread.Sleep(2000);
+                var listraDeAtivosDisponiveis = driver.FindElementsById("br.com.cedrotech.fastmobile:id/quoteSimbol");
 
-                //espera.Until(ExpectedConditions.ElementToBeClickable(ativoRemovido));
-                //oMetodosComuns.LongPressPosicoesFixas(driver, 950, 760, 200, 760);
-
-                //espera.Until(ExpectedConditions.ElementToBeClickable(btnExcluirAtivo));
-                //btnExcluirAtivo.Click();
+                var ativoSelecionado = listraDeAtivosDisponiveis.FirstOrDefault(p => p.Text == simboloDoAtivo.ToUpperInvariant());
+                ativoSelecionado.Click();
             }
         }
 
@@ -89,7 +81,7 @@ namespace FastTradeAndroid.Telas
             espera.Until(ExpectedConditions.ElementToBeClickable(campoPesquisaAtivo));
             campoPesquisaAtivo.SendKeys(nomeAtivo);
 
-            espera.Until(ExpectedConditions.ElementToBeClickable(ativoPetr4));
+            espera.Until(ExpectedConditions.ElementToBeClickable(primeiroElementoDaPesquisa));
             elementoAtivo.Click();
         }
     }

@@ -20,8 +20,8 @@ C:\FastTradeAndroid\FastTardeAndroid\bin\Debug\Microsoft.VisualStudio.TestPlatfo
 C:\FastTradeAndroid\FastTardeAndroid\bin\Debug\Newtonsoft.Json.xml
 C:\FastTradeAndroid\FastTardeAndroid\bin\Debug\WebDriver.xml
 C:\FastTradeAndroid\FastTardeAndroid\bin\Debug\WebDriver.Support.xml
-C:\FastTradeAndroid\FastTardeAndroid\obj\Debug\FastTradeAndroid.csprojAssemblyReference.cache
 C:\FastTradeAndroid\FastTardeAndroid\obj\Debug\FastTradeAndroid.csproj.CoreCompileInputs.cache
 C:\FastTradeAndroid\FastTardeAndroid\obj\Debug\FastTradeAndroid.csproj.CopyComplete
 C:\FastTradeAndroid\FastTardeAndroid\obj\Debug\FastTradeAndroid.dll
 C:\FastTradeAndroid\FastTardeAndroid\obj\Debug\FastTradeAndroid.pdb
+C:\FastTradeAndroid\FastTardeAndroid\obj\Debug\FastTradeAndroid.csprojAssemblyReference.cache
