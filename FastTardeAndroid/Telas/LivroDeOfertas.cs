@@ -5,12 +5,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace FastTradeAndroid.Telas
 {
-    class ResumoAtivo : Login
+    class LivroDeOfertas : Login
     {
         #region Elementos para adicionar novo ativo
 
@@ -44,10 +43,10 @@ namespace FastTradeAndroid.Telas
         #region Elementos do Resumo do Ativo
         [FindsBy(How = How.Id, Using = "br.com.cedrotech.fastmobile:id/assetInitials")]
         IWebElement stringNomeDoAtivo;
-        
+
         #endregion
 
-        public void AcessoResumoAtivo(string simboloDoAtivo)
+        public void AcessoOfertasDetalhadas(string simboloDoAtivo, string nomeDoMenu)
         {
             MetodosComuns oMetodosComuns = new MetodosComuns();
 
@@ -64,6 +63,62 @@ namespace FastTradeAndroid.Telas
 
                 espera.Until(ExpectedConditions.ElementToBeClickable(stringNomeDoAtivo));
                 oMetodosComuns.LongPressPosicoesFixas(driver, stringNomeDoAtivo.Location.X, stringNomeDoAtivo.Location.Y, 500, 387);
+
+                var listaDeMenusDisponiveis = driver.FindElementsById("br.com.cedrotech.fastmobile:id/psts_tab_title");
+
+                var menuSelecionado = listaDeMenusDisponiveis.FirstOrDefault(p => p.Text.ToUpperInvariant() == nomeDoMenu.ToUpperInvariant());
+                menuSelecionado.Click();
+            }
+            catch
+            {
+                //Inserindo ativo
+                espera.Until(ExpectedConditions.ElementToBeClickable(btnAdicionaAtivo));
+                btnAdicionaAtivo.Click();
+
+                SelecionaAtivo(simboloDoAtivo, primeiroElementoDaPesquisa);
+
+                espera.Until(ExpectedConditions.ElementToBeClickable(btnAdicionaAtivoDaLista));
+                btnAdicionaAtivoDaLista.Click();
+
+                espera.Until(ExpectedConditions.ElementToBeClickable(ativosDaPlanilha));
+
+                var listraDeAtivosDisponiveis = driver.FindElementsById("br.com.cedrotech.fastmobile:id/quoteSimbol");
+
+                var ativoSelecionado = listraDeAtivosDisponiveis.FirstOrDefault(p => p.Text == simboloDoAtivo.ToUpperInvariant());
+                ativoSelecionado.Click();
+
+                espera.Until(ExpectedConditions.ElementToBeClickable(stringNomeDoAtivo));
+                oMetodosComuns.LongPressPosicoesFixas(driver, stringNomeDoAtivo.Location.X, stringNomeDoAtivo.Location.Y, 500, 387);
+            }
+        }
+
+        public void AcessoOfertasAgregadas(string simboloDoAtivo, string nomeDoMenu)
+        {
+            MetodosComuns oMetodosComuns = new MetodosComuns();
+
+            try
+            {
+                LoginCorreto();
+
+                espera.Until(ExpectedConditions.ElementToBeClickable(ativosDaPlanilha));
+
+                var listraDeAtivosDisponiveis = driver.FindElementsById("br.com.cedrotech.fastmobile:id/quoteSimbol");
+
+                var ativoSelecionado = listraDeAtivosDisponiveis.FirstOrDefault(p => p.Text == simboloDoAtivo.ToUpperInvariant());
+                ativoSelecionado.Click();
+
+                espera.Until(ExpectedConditions.ElementToBeClickable(stringNomeDoAtivo));
+                oMetodosComuns.LongPressPosicoesFixas(driver, stringNomeDoAtivo.Location.X, stringNomeDoAtivo.Location.Y, 500, 387);
+
+                var listaDeMenusDisponiveis = driver.FindElementsById("br.com.cedrotech.fastmobile:id/psts_tab_title");
+
+                var menuSelecionado = listaDeMenusDisponiveis.FirstOrDefault(p => p.Text.ToUpperInvariant() == nomeDoMenu.ToUpperInvariant());
+                menuSelecionado.Click();
+
+                listaDeMenusDisponiveis = driver.FindElementsById("br.com.cedrotech.fastmobile:id/psts_tab_title");
+
+                menuSelecionado = listaDeMenusDisponiveis.FirstOrDefault(p => p.Text.ToUpperInvariant() == nomeDoMenu.ToUpperInvariant());
+                menuSelecionado.Click();
             }
             catch
             {

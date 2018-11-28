@@ -109,6 +109,26 @@ namespace FastTradeAndroid
         }
     }
 
+    [TestClass]
+    public class TestesLivroDeOfertas
+    {
+        [TestMethod]
+        [Priority(1)]
+        public void AcessoOfertasDetalhadas()
+        {
+            LivroDeOfertas oResumoAtivo = new LivroDeOfertas();
+            oResumoAtivo.AcessoOfertasDetalhadas("PETR4", "Ofertas Detalhadas");
+        }
+
+        [TestMethod]
+        [Priority(1)]
+        public void AcessoOfertasAgregadas()
+        {
+            LivroDeOfertas oResumoAtivo = new LivroDeOfertas();
+            oResumoAtivo.AcessoOfertasDetalhadas("PETR4", "Ofertas Agregadas");
+        }
+    }
+
     //[TestClass]
     //public class UnitTest2
     //{
