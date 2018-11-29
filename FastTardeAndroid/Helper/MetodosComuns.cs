@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace FastTradeAndroid
@@ -24,53 +25,92 @@ namespace FastTradeAndroid
             .Perform();
         }
 
-        public void LongPressPorElemento(AppiumDriver<AndroidElement> driver, IWebElement elemento, bool eixoX, bool positivo, int quantidade)
+        public void ScrollParaListaDePlanilhas(AppiumDriver<AndroidElement> driver, string seletorDoElemento)
         {
-            TouchAction touchAction = new TouchAction(driver);
+            var validador = true;
 
-            if (eixoX)
+            while (validador)
             {
-                if (positivo)
+                var lista = driver.FindElementsById(seletorDoElemento);
+                var elementOrigem = lista.LastOrDefault();
+                var elementoDestino = lista.FirstOrDefault();
+
+                var nomeElementoOrigem = elementOrigem.Text;
+                var nomeElementoDestino = elementoDestino.Text;
+
+                TouchAction touchAction = new TouchAction(driver);
+
+                Thread.Sleep(1000);
+
+                touchAction
+                .Press(elementOrigem.Location.X, elementOrigem.Location.Y)
+                .Wait(1000)
+                .MoveTo(elementoDestino.Location.X, elementoDestino.Location.Y)
+                .Release()
+                .Perform();
+
+                lista = driver.FindElementsById(seletorDoElemento);
+                elementOrigem = lista.LastOrDefault();
+                elementoDestino = lista.FirstOrDefault();
+
+                var nomeNovoElementoOrigem = elementOrigem.Text;
+                var nomeNovoElementoDestino = elementoDestino.Text;
+
+                if (nomeElementoOrigem == nomeNovoElementoOrigem && nomeElementoDestino == nomeNovoElementoDestino)
                 {
-                    touchAction
-                   .Press(elemento)
-                   .Wait(1000)
-                   .MoveTo(elemento.Location.X + quantidade, elemento.Location.Y)
-                   .Release()
-                   .Perform();
-                }
-                else
-                {
-                    touchAction
-                   .Press(elemento)
-                   .Wait(1000)
-                   .MoveTo(elemento.Location.X - quantidade, elemento.Location.Y)
-                   .Release()
-                   .Perform();
-                }
-            }
-            else
-            {
-                if (positivo)
-                {
-                    touchAction
-                   .Press(elemento)
-                   .Wait(1000)
-                   .MoveTo(elemento.Location.X, elemento.Location.Y + quantidade)
-                   .Release()
-                   .Perform();
-                }
-                else
-                {
-                    touchAction
-                   .Press(elemento)
-                   .Wait(1000)
-                   .MoveTo(elemento.Location.X, elemento.Location.Y - quantidade)
-                   .Release()
-                   .Perform();
+                    break;
+                    validador = false;
                 }
             }
         }
+
+        //public void LongPressPorElemento(AppiumDriver<AndroidElement> driver, IWebElement elemento, bool eixoX, bool positivo, int quantidade)
+        //{
+        //    TouchAction touchAction = new TouchAction(driver);
+
+        //    if (eixoX)
+        //    {
+        //        if (positivo)
+        //        {
+        //            touchAction
+        //           .Press(elemento)
+        //           .Wait(1000)
+        //           .MoveTo(elemento.Location.X + quantidade, elemento.Location.Y)
+        //           .Release()
+        //           .Perform();
+        //        }
+        //        else
+        //        {
+        //            touchAction
+        //           .Press(elemento)
+        //           .Wait(1000)
+        //           .MoveTo(elemento.Location.X - quantidade, elemento.Location.Y)
+        //           .Release()
+        //           .Perform();
+        //        }
+        //    }
+        //    else
+        //    {
+        //        if (positivo)
+        //        {
+        //            touchAction
+        //           .Press(elemento)
+        //           .Wait(1000)
+        //           .MoveTo(elemento.Location.X, elemento.Location.Y + quantidade)
+        //           .Release()
+        //           .Perform();
+        //        }
+        //        else
+        //        {
+        //            touchAction
+        //           .Press(elemento)
+        //           .Wait(1000)
+        //           .MoveTo(elemento.Location.X, elemento.Location.Y - quantidade)
+        //           .Release()
+        //           .Perform();
+        //        }
+        //    }
+        //}
 
         #region MétodoLongPressAnderson
         //public void LongPressFrameAtual(AppiumDriver<AndroidElement> driver, IWebElement elemento, int posicaoDestinoX = 0, int posicaoDestinoY = 0, ScrollDirection directionScroll = ScrollDirection.Horizontal, bool destinoPositivo = true)

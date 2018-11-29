@@ -112,11 +112,10 @@ namespace FastTradeAndroid.Telas
 
                 var listaDeMenusDisponiveis = driver.FindElementsById("br.com.cedrotech.fastmobile:id/psts_tab_title");
 
-                var menuSelecionado = listaDeMenusDisponiveis.FirstOrDefault(p => p.Text.ToUpperInvariant() == nomeDoMenu.ToUpperInvariant());
-                menuSelecionado.Click();
+                var menuSelecionado = listaDeMenusDisponiveis.FirstOrDefault(p => p.Text.ToUpperInvariant() == "Ofertas Detalhadas".ToUpperInvariant());
+                oMetodosComuns.LongPressPosicoesFixas(driver, menuSelecionado.Location.X, menuSelecionado.Location.Y, 50, 710);
 
                 listaDeMenusDisponiveis = driver.FindElementsById("br.com.cedrotech.fastmobile:id/psts_tab_title");
-
                 menuSelecionado = listaDeMenusDisponiveis.FirstOrDefault(p => p.Text.ToUpperInvariant() == nomeDoMenu.ToUpperInvariant());
                 menuSelecionado.Click();
             }
@@ -140,6 +139,15 @@ namespace FastTradeAndroid.Telas
 
                 espera.Until(ExpectedConditions.ElementToBeClickable(stringNomeDoAtivo));
                 oMetodosComuns.LongPressPosicoesFixas(driver, stringNomeDoAtivo.Location.X, stringNomeDoAtivo.Location.Y, 500, 387);
+
+                var listaDeMenusDisponiveis = driver.FindElementsById("br.com.cedrotech.fastmobile:id/psts_tab_title");
+
+                var menuSelecionado = listaDeMenusDisponiveis.FirstOrDefault(p => p.Text.ToUpperInvariant() == "Ofertas Detalhadas".ToUpperInvariant());
+                oMetodosComuns.LongPressPosicoesFixas(driver, menuSelecionado.Location.X, menuSelecionado.Location.Y, 50, 710);
+
+                listaDeMenusDisponiveis = driver.FindElementsById("br.com.cedrotech.fastmobile:id/psts_tab_title");
+                menuSelecionado = listaDeMenusDisponiveis.FirstOrDefault(p => p.Text.ToUpperInvariant() == nomeDoMenu.ToUpperInvariant());
+                menuSelecionado.Click();
             }
         }
 

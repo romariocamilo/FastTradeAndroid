@@ -33,7 +33,7 @@ namespace FastTradeAndroid
         public void AdicionarPlanilhaCotacao()
         {
             Cotacoes oCotacoes = new Cotacoes();
-            oCotacoes.AdicionarPlanilhaCotacao("Planilha 2");
+            oCotacoes.AdicionarPlanilhaCotacao("Planilha QUINTA 28");
         }
 
         [TestMethod]
@@ -121,11 +121,23 @@ namespace FastTradeAndroid
         }
 
         [TestMethod]
-        [Priority(1)]
+        [Priority(2)]
         public void AcessoOfertasAgregadas()
         {
             LivroDeOfertas oResumoAtivo = new LivroDeOfertas();
-            oResumoAtivo.AcessoOfertasDetalhadas("PETR4", "Ofertas Agregadas");
+            oResumoAtivo.AcessoOfertasAgregadas("PETR4", "Ofertas Agregadas");
+        }
+    }
+
+    [TestClass]
+    public class TestesConsultaRapida
+    {
+        [TestMethod]
+        [Priority(1)]
+        public void AcessoConsultaRapida()
+        {
+            ConsultaRapida oConsultaRapida = new ConsultaRapida();
+            oConsultaRapida.ConsultaRapidoAtivo("PETR4", "CMIG4");
         }
     }
 

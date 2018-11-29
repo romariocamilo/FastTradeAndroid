@@ -66,8 +66,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Configuracoes\AmbienteConfig.cs" />
-    <Compile Include="ConsultaRapida.cs" />
-    <Compile Include="Carteira.cs" />
+    <Compile Include="Telas\ConsultaRapida.cs" />
     <Compile Include="Telas\LivroDeOfertas.cs" />
     <Compile Include="Telas\PlanilhaCotacao.cs" />
     <Compile Include="Telas\GraficoCotacao.cs" />
