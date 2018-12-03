@@ -25,7 +25,7 @@ namespace FastTradeAndroid
             .Perform();
         }
 
-        public void ScrollParaListaDePlanilhas(AppiumDriver<AndroidElement> driver, string seletorDoElemento)
+        public void ScrollParaListasPlanilhasPorId(AppiumDriver<AndroidElement> driver, string seletorDoElemento)
         {
             var validador = true;
 
@@ -62,6 +62,53 @@ namespace FastTradeAndroid
                     validador = false;
                 }
             }
+        }
+
+        public IWebElement CapturaElementoDaListaPorId(AppiumDriver<AndroidElement> driver, string seletorDoElemento, string nomeDoElemento)
+        {
+            IWebElement elementoCapturado = null;
+            WebDriverWait espera = new WebDriverWait(driver, TimeSpan.FromSeconds(20));
+
+            while (elementoCapturado == null)
+            {
+                Thread.Sleep(2000);
+                var lista = driver.FindElementsById(seletorDoElemento);
+                var elementOrigem = lista.LastOrDefault();
+                var elementoDestino = lista.FirstOrDefault();
+
+                var nomeElementoOrigem = elementOrigem.Text;
+                var nomeElementoDestino = elementoDestino.Text;
+
+                elementoCapturado = lista.FirstOrDefault(e => e.Text.ToUpperInvariant() == nomeDoElemento.ToUpperInvariant());
+
+                if (elementoCapturado != null)
+                {
+                    break;
+                }
+
+                Thread.Sleep(1000);
+                TouchAction touchAction = new TouchAction(driver);
+
+                touchAction
+                .Press(elementOrigem.Location.X, elementOrigem.Location.Y)
+                .Wait(1000)
+                .MoveTo(elementoDestino.Location.X, elementoDestino.Location.Y)
+                .Release()
+                .Perform();
+
+                lista = driver.FindElementsById(seletorDoElemento);
+                elementOrigem = lista.LastOrDefault();
+                elementoDestino = lista.FirstOrDefault();
+
+                var nomeNovoElementoOrigem = elementOrigem.Text;
+                var nomeNovoElementoDestino = elementoDestino.Text;
+
+                if (nomeElementoOrigem == nomeNovoElementoOrigem && nomeElementoDestino == nomeNovoElementoDestino)
+                {
+                    break;
+                }
+            }
+            return elementoCapturado;
         }
 
         //public void LongPressPorElemento(AppiumDriver<AndroidElement> driver, IWebElement elemento, bool eixoX, bool positivo, int quantidade)

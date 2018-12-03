@@ -43,6 +43,9 @@ namespace FastTradeAndroid
 
             Thread.Sleep(4000);
 
+            espera.Until(ExpectedConditions.ElementToBeClickable(btnFechar));
+            btnFechar.Click();
+
             espera.Until(ExpectedConditions.ElementToBeClickable(campoPesquisaAtivo));
             campoPesquisaAtivo.SendKeys(nomeDoAtivo2);
 

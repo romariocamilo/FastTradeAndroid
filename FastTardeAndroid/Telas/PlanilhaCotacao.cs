@@ -119,7 +119,7 @@ namespace FastTradeAndroid
             //DAQUI EM DIANTE COMEÇA OS TESTES DO SCROLL
 
             Thread.Sleep(1000);
-            oMetodosComuns.ScrollParaListaDePlanilhas(driver, "br.com.cedrotech.fastmobile:id/listName");
+            oMetodosComuns.ScrollParaListasPlanilhasPorId(driver, "br.com.cedrotech.fastmobile:id/listName");
         }
 
         //var lista OK
@@ -298,17 +298,18 @@ namespace FastTradeAndroid
         //    //ESSA OPÇÃO AINDA NÃO ESTA DISPONÍVEL NO APP
         //}
 
-        public void ExcluirAtivoPlanilha()
+        public void ExcluirAtivoPlanilha(string nomeDoAtivo)
         {
             MetodosComuns oMetodosComuns = new MetodosComuns();
-
+            LoginCorreto();
+            
             try
             {
-                LoginCorreto();
-
                 Thread.Sleep(2000);
-                espera.Until(ExpectedConditions.ElementToBeClickable(ativoRemovido));
-                oMetodosComuns.LongPressPosicoesFixas(driver, 950, 760, 200, 760);
+                IWebElement elementoCapturado = oMetodosComuns.CapturaElementoDaListaPorId(driver, "br.com.cedrotech.fastmobile:id/quoteSimbol", nomeDoAtivo);
+
+                espera.Until(ExpectedConditions.ElementToBeClickable(elementoCapturado));
+                oMetodosComuns.LongPressPosicoesFixas(driver, elementoCapturado.Location.X + 400, elementoCapturado.Location.Y, elementoCapturado.Location.X, elementoCapturado.Location.Y);
 
                 espera.Until(ExpectedConditions.ElementToBeClickable(btnExcluirAtivo));
                 btnExcluirAtivo.Click();
@@ -318,7 +319,18 @@ namespace FastTradeAndroid
                 espera.Until(ExpectedConditions.ElementToBeClickable(btnAdicionaAtivo));
                 btnAdicionaAtivo.Click();
 
-                SelecionaAtivo("PETR4", ativoPetr4);
+                espera.Until(ExpectedConditions.ElementToBeClickable(campoPesquisaAtivo));
+                campoPesquisaAtivo.SendKeys(nomeDoAtivo);
+
+                //IMPLEMENTANDO 03/12/2018 ROMARIO
+                IWebElement elementoCapturado = oMetodosComuns.CapturaElementoDaListaPorId(driver, "br.com.cedrotech.fastmobile:id/titleQuote", nomeDoAtivo);
+                int x = elementoCapturado.Location.X;
+                int y = elementoCapturado.Location.Y;
+
+                int xAdd = driver.FindElementById("br.com.cedrotech.fastmobile:id/addQuotation").Location.X;
+                int yAdd = driver.FindElementById("br.com.cedrotech.fastmobile:id/addQuotation").Location.Y;
+
+                driver.Tap(1, 816 + x, 29 + y, 1);
 
                 espera.Until(ExpectedConditions.ElementToBeClickable(btnAdicionaAtivoDaLista));
                 btnAdicionaAtivoDaLista.Click();

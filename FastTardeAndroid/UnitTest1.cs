@@ -73,7 +73,7 @@ namespace FastTradeAndroid
         public void ExcluirAtivoPlanilha()
         {
             Cotacoes oCotacoes = new Cotacoes();
-            oCotacoes.ExcluirAtivoPlanilha();
+            oCotacoes.ExcluirAtivoPlanilha("PETR4");
         }
     }
 
@@ -169,5 +169,4 @@ namespace FastTradeAndroid
     //        oCarteira.VisualizaSaldo();
     //    }
     //}
-
 }
