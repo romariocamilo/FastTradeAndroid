@@ -11,12 +11,17 @@ namespace FastTradeAndroid
     [TestClass]
     public class TestesPlanilhaCotacao
     {
+        static string dataAtual = DateTime.Now.ToLocalTime().ToString();
+        static string nomeCliente = "Romario";
+        string ativoDosTestes = "PETR4";
+        string nomeApresentacao = nomeCliente + ": " + dataAtual;
+
         [TestMethod]
         [Priority(1)]
         public void VisualizarPlanilhaCotacaoDetalhada()
         {
             Cotacoes oCotacoes = new Cotacoes();
-            oCotacoes.VisualizarPlanilhaCotacaoDetalhada();
+            oCotacoes.VisualizarPlanilhaCotacaoDetalhada(ativoDosTestes);
         }
 
         [TestMethod]
@@ -24,7 +29,7 @@ namespace FastTradeAndroid
         public void VisualizarPlanilhaCotacaoResumida()
         {
             Cotacoes oCotacoes = new Cotacoes();
-            oCotacoes.VisualizarPlanilhaCotacaoResumida();
+            oCotacoes.VisualizarPlanilhaCotacaoResumida(ativoDosTestes);
         }
 
         //Nesse cenário é necessário implementar o scroll para valida a planilha criada
@@ -33,7 +38,7 @@ namespace FastTradeAndroid
         public void AdicionarPlanilhaCotacao()
         {
             Cotacoes oCotacoes = new Cotacoes();
-            oCotacoes.AdicionarPlanilhaCotacao("Planilha QUINTA 28");
+            oCotacoes.AdicionarPlanilhaCotacao(nomeApresentacao);     
         }
 
         [TestMethod]
@@ -41,7 +46,7 @@ namespace FastTradeAndroid
         public void TrocaPlanilhaCotacao()
         {
             Cotacoes oCotacoes = new Cotacoes();
-            oCotacoes.TrocaPlanilhaCotacao("PLANILHA QUINTA3");
+            oCotacoes.TrocaPlanilhaCotacao(nomeApresentacao);
         }
 
         [TestMethod]
@@ -49,7 +54,7 @@ namespace FastTradeAndroid
         public void RenomearPlanilhaCotacao()
         {
             Cotacoes oCotacoes = new Cotacoes();
-            oCotacoes.RenomearPlanilhaCotacao("NovaPlanilha", "NovoNome");
+            oCotacoes.RenomearPlanilhaCotacao(nomeApresentacao, "Planilha Renomeada");
         }
 
         [TestMethod]
@@ -57,7 +62,7 @@ namespace FastTradeAndroid
         public void ExcluirPlanilhaCotacao()
         {
             Cotacoes oCotacoes = new Cotacoes();
-            oCotacoes.ExcluirPlanilhaCotacao("PlanilhaParaExcluir");
+            oCotacoes.ExcluirPlanilhaCotacao("Planilha Para Excluir");
         }
 
         [TestMethod]
@@ -65,7 +70,7 @@ namespace FastTradeAndroid
         public void AdicionaAtivosPlanilha()
         {
             Cotacoes oCotacoes = new Cotacoes();
-            oCotacoes.AdicionaAtivosPlanilha("PLANILHA ROMARIO2");
+            oCotacoes.AdicionaAtivosPlanilha(nomeApresentacao, ativoDosTestes);
         }
 
         [TestMethod]
@@ -73,7 +78,7 @@ namespace FastTradeAndroid
         public void ExcluirAtivoPlanilha()
         {
             Cotacoes oCotacoes = new Cotacoes();
-            oCotacoes.ExcluirAtivoPlanilha("PETR4");
+            oCotacoes.ExcluirAtivoPlanilha(ativoDosTestes);
         }
     }
 

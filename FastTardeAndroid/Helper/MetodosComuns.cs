@@ -14,6 +14,7 @@ namespace FastTradeAndroid
 {
     class MetodosComuns : AmbienteConfig
     {
+        //Esse método clica em uma posição de origem da tela e arrasta para a posição destino
         public void LongPressPosicoesFixas(AppiumDriver<AndroidElement> driver, int posicaoOrigemX = 0, int posicaoOrigemY = 0, int posicaoDestinoX = 0, int posicaoDestinoY = 0)
         {
             TouchAction touchAction = new TouchAction(driver);
@@ -25,191 +26,217 @@ namespace FastTradeAndroid
             .Perform();
         }
 
-        public void ScrollParaListasPlanilhasPorId(AppiumDriver<AndroidElement> driver, string seletorDoElemento)
+        //Esse método efetual um scrool no final de uma lista disponível
+        public void ScrollParaListasPlanilhasPorId(AppiumDriver<AndroidElement> driver, string seletorIdDoElemento = null, string seletorClassDoElemento = null)
         {
-            var validador = true;
-
-            while (validador)
+            //Nesse else o método captura o elemento da lista pela seletor Id
+            if (seletorIdDoElemento != null)
             {
-                var lista = driver.FindElementsById(seletorDoElemento);
-                var elementOrigem = lista.LastOrDefault();
-                var elementoDestino = lista.FirstOrDefault();
+                var validador = true;
 
-                var nomeElementoOrigem = elementOrigem.Text;
-                var nomeElementoDestino = elementoDestino.Text;
-
-                TouchAction touchAction = new TouchAction(driver);
-
-                Thread.Sleep(1000);
-
-                touchAction
-                .Press(elementOrigem.Location.X, elementOrigem.Location.Y)
-                .Wait(1000)
-                .MoveTo(elementoDestino.Location.X, elementoDestino.Location.Y)
-                .Release()
-                .Perform();
-
-                lista = driver.FindElementsById(seletorDoElemento);
-                elementOrigem = lista.LastOrDefault();
-                elementoDestino = lista.FirstOrDefault();
-
-                var nomeNovoElementoOrigem = elementOrigem.Text;
-                var nomeNovoElementoDestino = elementoDestino.Text;
-
-                if (nomeElementoOrigem == nomeNovoElementoOrigem && nomeElementoDestino == nomeNovoElementoDestino)
+                while (validador)
                 {
-                    break;
-                    validador = false;
+                    var lista = driver.FindElementsById(seletorIdDoElemento);
+                    var elementOrigem = lista.LastOrDefault();
+                    var elementoDestino = lista.FirstOrDefault();
+
+                    var nomeElementoOrigem = elementOrigem.Text;
+                    var nomeElementoDestino = elementoDestino.Text;
+
+                    TouchAction touchAction = new TouchAction(driver);
+
+                    Thread.Sleep(1000);
+
+                    touchAction
+                    .Press(elementOrigem.Location.X, elementOrigem.Location.Y)
+                    .Wait(1000)
+                    .MoveTo(elementoDestino.Location.X, elementoDestino.Location.Y)
+                    .Release()
+                    .Perform();
+
+                    lista = driver.FindElementsById(seletorIdDoElemento);
+                    elementOrigem = lista.LastOrDefault();
+                    elementoDestino = lista.FirstOrDefault();
+
+                    var nomeNovoElementoOrigem = elementOrigem.Text;
+                    var nomeNovoElementoDestino = elementoDestino.Text;
+
+                    if (nomeElementoOrigem == nomeNovoElementoOrigem && nomeElementoDestino == nomeNovoElementoDestino)
+                    {
+                        break;
+                        validador = false;
+                    }
+                }
+            }
+
+            //Nesse else o método captura o elemento da lista pela seletor Class
+            else if (seletorClassDoElemento != null)
+            {
+                var validador = true;
+
+                while (validador)
+                {
+                    var lista = driver.FindElementsByClassName(seletorClassDoElemento);
+                    var elementOrigem = lista.LastOrDefault();
+                    var elementoDestino = lista.FirstOrDefault();
+
+                    var nomeElementoOrigem = elementOrigem.Text;
+                    var nomeElementoDestino = elementoDestino.Text;
+
+                    TouchAction touchAction = new TouchAction(driver);
+
+                    Thread.Sleep(1000);
+
+                    touchAction
+                    .Press(elementOrigem.Location.X, elementOrigem.Location.Y)
+                    .Wait(1000)
+                    .MoveTo(elementoDestino.Location.X, elementoDestino.Location.Y)
+                    .Release()
+                    .Perform();
+
+                    lista = driver.FindElementsById(seletorIdDoElemento);
+                    elementOrigem = lista.LastOrDefault();
+                    elementoDestino = lista.FirstOrDefault();
+
+                    var nomeNovoElementoOrigem = elementOrigem.Text;
+                    var nomeNovoElementoDestino = elementoDestino.Text;
+
+                    if (nomeElementoOrigem == nomeNovoElementoOrigem && nomeElementoDestino == nomeNovoElementoDestino)
+                    {
+                        break;
+                        validador = false;
+                    }
                 }
             }
         }
 
-        public IWebElement CapturaElementoDaListaPorId(AppiumDriver<AndroidElement> driver, string seletorDoElemento, string nomeDoElemento)
+        //Esse método captura um determinado elemento da lista e retorna o mesmo, os seletores disponíveis são Id e Class
+        public IWebElement CapturaElementoDaLista(AppiumDriver<AndroidElement> driver, string nomeDoElemento, string seletorIdDoElemento = null, string seletorClassDoElemento = null)
         {
-            IWebElement elementoCapturado = null;
+            //Nesse else o método captura o elemento da lista pela seletor Id
+            if (seletorIdDoElemento != null)
+            {
+                IWebElement elementoCapturado = null;
+                WebDriverWait espera = new WebDriverWait(driver, TimeSpan.FromSeconds(20));
+
+                while (elementoCapturado == null)
+                {
+                    Thread.Sleep(2000);
+                    var lista = driver.FindElementsById(seletorIdDoElemento);
+                    var elementOrigem = lista.LastOrDefault();
+                    var elementoDestino = lista.FirstOrDefault();
+
+                    var nomeElementoOrigem = elementOrigem.Text;
+                    var nomeElementoDestino = elementoDestino.Text;
+
+                    elementoCapturado = lista.FirstOrDefault(e => e.Text.ToUpperInvariant() == nomeDoElemento.ToUpperInvariant());
+
+                    if (elementoCapturado != null)
+                    {
+                        break;
+                    }
+
+                    Thread.Sleep(1000);
+                    TouchAction touchAction = new TouchAction(driver);
+
+                    touchAction
+                    .Press(elementOrigem.Location.X, elementOrigem.Location.Y)
+                    .Wait(1000)
+                    .MoveTo(elementoDestino.Location.X, elementoDestino.Location.Y)
+                    .Release()
+                    .Perform();
+
+                    lista = driver.FindElementsById(seletorIdDoElemento);
+                    elementOrigem = lista.LastOrDefault();
+                    elementoDestino = lista.FirstOrDefault();
+
+                    var nomeNovoElementoOrigem = elementOrigem.Text;
+                    var nomeNovoElementoDestino = elementoDestino.Text;
+
+                    if (nomeElementoOrigem == nomeNovoElementoOrigem && nomeElementoDestino == nomeNovoElementoDestino)
+                    {
+                        break;
+                    }
+                }
+                return elementoCapturado;
+            }
+
+            //Nesse else o método captura o elemento da lista pela seletor Class
+            else if (seletorClassDoElemento != null)
+            {
+                IWebElement elementoCapturado = null;
+                WebDriverWait espera = new WebDriverWait(driver, TimeSpan.FromSeconds(20));
+
+                while (seletorClassDoElemento == null)
+                {
+                    Thread.Sleep(2000);
+                    var lista = driver.FindElementsByClassName(seletorIdDoElemento);
+                    var elementOrigem = lista.LastOrDefault();
+                    var elementoDestino = lista.FirstOrDefault();
+
+                    var nomeElementoOrigem = elementOrigem.Text;
+                    var nomeElementoDestino = elementoDestino.Text;
+
+                    elementoCapturado = lista.FirstOrDefault(e => e.Text.ToUpperInvariant() == nomeDoElemento.ToUpperInvariant());
+
+                    if (elementoCapturado != null)
+                    {
+                        break;
+                    }
+
+                    Thread.Sleep(1000);
+                    TouchAction touchAction = new TouchAction(driver);
+
+                    touchAction
+                    .Press(elementOrigem.Location.X, elementOrigem.Location.Y)
+                    .Wait(1000)
+                    .MoveTo(elementoDestino.Location.X, elementoDestino.Location.Y)
+                    .Release()
+                    .Perform();
+
+                    lista = driver.FindElementsById(seletorIdDoElemento);
+                    elementOrigem = lista.LastOrDefault();
+                    elementoDestino = lista.FirstOrDefault();
+
+                    var nomeNovoElementoOrigem = elementOrigem.Text;
+                    var nomeNovoElementoDestino = elementoDestino.Text;
+
+                    if (nomeElementoOrigem == nomeNovoElementoOrigem && nomeElementoDestino == nomeNovoElementoDestino)
+                    {
+                        break;
+                    }
+                }
+                return elementoCapturado;
+            }
+
+            else
+            {
+                return null;
+            }
+        }
+
+        //Esse método adiciona um ativo há planilha de cotação selecionada
+        public void AddAtivoNaPlanilhaCotacaoAtual(AppiumDriver<AndroidElement> driver, string nomeAtivo)
+        {
             WebDriverWait espera = new WebDriverWait(driver, TimeSpan.FromSeconds(20));
+            IWebElement campoPesquisaAtivo = driver.FindElementById("br.com.cedrotech.fastmobile:id/autocompleteQuotation");
 
-            while (elementoCapturado == null)
-            {
-                Thread.Sleep(2000);
-                var lista = driver.FindElementsById(seletorDoElemento);
-                var elementOrigem = lista.LastOrDefault();
-                var elementoDestino = lista.FirstOrDefault();
+            espera.Until(ExpectedConditions.ElementToBeClickable(campoPesquisaAtivo));
+            campoPesquisaAtivo.SendKeys(nomeAtivo);
 
-                var nomeElementoOrigem = elementOrigem.Text;
-                var nomeElementoDestino = elementoDestino.Text;
+            IWebElement elementoCapturado = CapturaElementoDaLista(driver, nomeAtivo, "br.com.cedrotech.fastmobile:id/titleQuote");
 
-                elementoCapturado = lista.FirstOrDefault(e => e.Text.ToUpperInvariant() == nomeDoElemento.ToUpperInvariant());
+            int posicaoXBtnAdicionarAtivo = 816 + elementoCapturado.Location.X;
+            int posicaoYBtnAdicionarAtivo = 29 + elementoCapturado.Location.Y;
 
-                if (elementoCapturado != null)
-                {
-                    break;
-                }
+            Thread.Sleep(2000);
+            driver.Tap(1, posicaoXBtnAdicionarAtivo, posicaoYBtnAdicionarAtivo, 2);
 
-                Thread.Sleep(1000);
-                TouchAction touchAction = new TouchAction(driver);
+            IWebElement btnAdicionaAtivoDaLista = driver.FindElementById("br.com.cedrotech.fastmobile:id/floatingActionButtonAddQuote");
 
-                touchAction
-                .Press(elementOrigem.Location.X, elementOrigem.Location.Y)
-                .Wait(1000)
-                .MoveTo(elementoDestino.Location.X, elementoDestino.Location.Y)
-                .Release()
-                .Perform();
-
-                lista = driver.FindElementsById(seletorDoElemento);
-                elementOrigem = lista.LastOrDefault();
-                elementoDestino = lista.FirstOrDefault();
-
-                var nomeNovoElementoOrigem = elementOrigem.Text;
-                var nomeNovoElementoDestino = elementoDestino.Text;
-
-                if (nomeElementoOrigem == nomeNovoElementoOrigem && nomeElementoDestino == nomeNovoElementoDestino)
-                {
-                    break;
-                }
-            }
-            return elementoCapturado;
+            espera.Until(ExpectedConditions.ElementToBeClickable(btnAdicionaAtivoDaLista));
+            btnAdicionaAtivoDaLista.Click();
         }
-
-        //public void LongPressPorElemento(AppiumDriver<AndroidElement> driver, IWebElement elemento, bool eixoX, bool positivo, int quantidade)
-        //{
-        //    TouchAction touchAction = new TouchAction(driver);
-
-        //    if (eixoX)
-        //    {
-        //        if (positivo)
-        //        {
-        //            touchAction
-        //           .Press(elemento)
-        //           .Wait(1000)
-        //           .MoveTo(elemento.Location.X + quantidade, elemento.Location.Y)
-        //           .Release()
-        //           .Perform();
-        //        }
-        //        else
-        //        {
-        //            touchAction
-        //           .Press(elemento)
-        //           .Wait(1000)
-        //           .MoveTo(elemento.Location.X - quantidade, elemento.Location.Y)
-        //           .Release()
-        //           .Perform();
-        //        }
-        //    }
-        //    else
-        //    {
-        //        if (positivo)
-        //        {
-        //            touchAction
-        //           .Press(elemento)
-        //           .Wait(1000)
-        //           .MoveTo(elemento.Location.X, elemento.Location.Y + quantidade)
-        //           .Release()
-        //           .Perform();
-        //        }
-        //        else
-        //        {
-        //            touchAction
-        //           .Press(elemento)
-        //           .Wait(1000)
-        //           .MoveTo(elemento.Location.X, elemento.Location.Y - quantidade)
-        //           .Release()
-        //           .Perform();
-        //        }
-        //    }
-        //}
-
-        #region MétodoLongPressAnderson
-        //public void LongPressFrameAtual(AppiumDriver<AndroidElement> driver, IWebElement elemento, int posicaoDestinoX = 0, int posicaoDestinoY = 0, ScrollDirection directionScroll = ScrollDirection.Horizontal, bool destinoPositivo = true)
-        //{
-        //    ///todo refinar metodo
-
-        //    TouchAction touchAction = new TouchAction(driver);
-        //    switch (directionScroll)
-        //    {
-        //        case ScrollDirection.Horizontal:
-        //            if (destinoPositivo)
-        //            {
-        //                touchAction
-        //                .Press(elemento)
-        //                .Wait(1000)
-        //                .MoveTo(elemento.Location.X + posicaoDestinoX, elemento.Location.Y)
-        //                .Release()
-        //                .Perform();
-        //            }
-        //            else
-        //            {
-        //                touchAction
-        //                .Press(elemento)
-        //                .Wait(1000)
-        //                .MoveTo(elemento.Location.X - posicaoDestinoX, elemento.Location.Y)
-        //                .Release()
-        //                .Perform();
-        //            }
-        //            break;
-        //        case ScrollDirection.Vertical:
-        //            if (destinoPositivo)
-        //            {
-        //                touchAction
-        //                .Press(elemento)
-        //                .Wait(1000)
-        //                .MoveTo(elemento.Location.X, elemento.Location.Y + posicaoDestinoY)
-        //                .Release()
-        //                .Perform();
-        //            }
-        //            else
-        //            {
-        //                touchAction
-        //                .Press(elemento)
-        //                .Wait(1000)
-        //                .MoveTo(elemento.Location.X, elemento.Location.Y - posicaoDestinoY)
-        //                .Release()
-        //                .Perform();
-        //            }
-        //            break;
-        //    }
-        //}
-        #endregion
     }
 }
 

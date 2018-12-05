@@ -13,6 +13,7 @@ namespace FastTradeAndroid
 {
     class ConsultaRapida : Login
     {
+        #region Elementos da busca rápida de ativos"
         [FindsBy(How = How.Id, Using = "br.com.cedrotech.fastmobile:id/searchMenu")]
         IWebElement iconePesquisaAtivo;
 
@@ -24,6 +25,7 @@ namespace FastTradeAndroid
 
         [FindsBy(How = How.Id, Using = "br.com.cedrotech.fastmobile:id/cancelQuery")]
         IWebElement btnCancelar;
+        #endregion
 
         public void ConsultaRapidoAtivo(string nomeDoAtivo, string nomeDoAtivo2)
         {
