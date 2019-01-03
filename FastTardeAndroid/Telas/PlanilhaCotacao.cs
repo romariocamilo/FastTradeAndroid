@@ -17,32 +17,32 @@ namespace FastTradeAndroid
     class Cotacoes : Login
     {
         #region Tipo De Cotações
-        [FindsBy(How = How.Id, Using = "br.com.cedrotech.fastmobile:id/fullView")]
+        [FindsBy(How = How.Id, Using = "br.com.cedrotech.fastmobile.dev:id/fullView")]
         IWebElement visaoCompleta;
 
-        [FindsBy(How = How.Id, Using = "br.com.cedrotech.fastmobile:id/shortView")]
+        [FindsBy(How = How.Id, Using = "br.com.cedrotech.fastmobile.dev:id/shortView")]
         IWebElement visaoResumida;
         #endregion
 
         #region Elementos para adicionar nova planilha de cotação
-        [FindsBy(How = How.Id, Using = "br.com.cedrotech.fastmobile:id/arrowIcon")]
+        [FindsBy(How = How.Id, Using = "br.com.cedrotech.fastmobile.dev:id/arrowIcon")]
         IWebElement btnExpandirListas;
 
-        [FindsBy(How = How.Id, Using = "br.com.cedrotech.fastmobile:id/createNewList")]
+        [FindsBy(How = How.Id, Using = "br.com.cedrotech.fastmobile.dev:id/createNewList")]
         IWebElement btnCriarNovaLista;
 
-        [FindsBy(How = How.Id, Using = "br.com.cedrotech.fastmobile:id/editNameSelectedEditText")]
+        [FindsBy(How = How.Id, Using = "br.com.cedrotech.fastmobile.dev:id/editNameSelectedEditText")]
         IWebElement campoNomeNovaPlanilha;
 
-        [FindsBy(How = How.Id, Using = "br.com.cedrotech.fastmobile:id/saveEdit")]
+        [FindsBy(How = How.Id, Using = "br.com.cedrotech.fastmobile.dev:id/saveEdit")]
         IWebElement btnSalvar;
         #endregion
 
         #region Elementos para adicionar novo ativo
-        [FindsBy(How = How.Id, Using = "br.com.cedrotech.fastmobile:id/floatingActionButton")]
+        [FindsBy(How = How.Id, Using = "br.com.cedrotech.fastmobile.dev:id/floatingActionButton")]
         IWebElement btnAdicionaAtivo;
 
-        [FindsBy(How = How.Id, Using = "br.com.cedrotech.fastmobile:id/autocompleteQuotation")]
+        [FindsBy(How = How.Id, Using = "br.com.cedrotech.fastmobile.dev:id/autocompleteQuotation")]
         IWebElement campoPesquisaAtivo;
 
         [FindsBy(How = How.XPath, Using = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.support.v7.widget.RecyclerView/android.view.ViewGroup[2]/android.widget.ImageView")]
@@ -54,22 +54,22 @@ namespace FastTradeAndroid
         [FindsBy(How = How.XPath, Using = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.support.v7.widget.RecyclerView/android.view.ViewGroup[1]/android.widget.ImageView")]
         IWebElement ativoVulc3;
 
-        [FindsBy(How = How.Id, Using = "br.com.cedrotech.fastmobile:id/floatingActionButtonAddQuote")]
+        [FindsBy(How = How.Id, Using = "br.com.cedrotech.fastmobile.dev:id/floatingActionButtonAddQuote")]
         IWebElement btnAdicionaAtivoDaLista;
 
         #endregion
 
         #region Elementos para renomear e excluir planilhas
-        [FindsBy(How = How.Id, Using = "br.com.cedrotech.fastmobile:id/editItemList")]
+        [FindsBy(How = How.Id, Using = "br.com.cedrotech.fastmobile.dev:id/editItemList")]
         IWebElement btnRenomearPlanilha;
 
-        [FindsBy(How = How.Id, Using = "br.com.cedrotech.fastmobile:id/deleteItemList")]
+        [FindsBy(How = How.Id, Using = "br.com.cedrotech.fastmobile.dev:id/deleteItemList")]
         IWebElement btnExcluirPlanilha;
 
-        [FindsBy(How = How.Id, Using = "br.com.cedrotech.fastmobile:id/yesDelete")]
+        [FindsBy(How = How.Id, Using = "br.com.cedrotech.fastmobile.dev:id/yesDelete")]
         IWebElement btnConfirmacaoExclusaoSim;
 
-        [FindsBy(How = How.Id, Using = "br.com.cedrotech.fastmobile:id/YesDelete")]
+        [FindsBy(How = How.Id, Using = "br.com.cedrotech.fastmobile.dev:id/YesDelete")]
         IWebElement btnNegacaoExclusaoNao;
         #endregion
 
@@ -77,7 +77,7 @@ namespace FastTradeAndroid
         [FindsBy(How = How.XPath, Using = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout[1]/android.view.ViewGroup/android.view.ViewGroup[2]/android.support.v7.widget.RecyclerView/android.view.ViewGroup[1]/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup")]
         IWebElement ativoRemovido;
 
-        [FindsBy(How = How.Id, Using = "br.com.cedrotech.fastmobile:id/floatingActionButtonDelete")]
+        [FindsBy(How = How.Id, Using = "br.com.cedrotech.fastmobile.dev:id/floatingActionButtonDelete")]
         IWebElement btnExcluirAtivo;
         #endregion
 
@@ -89,7 +89,7 @@ namespace FastTradeAndroid
 
             Thread.Sleep(3000);
 
-            var listaDeAtivos = driver.FindElementsById("br.com.cedrotech.fastmobile:id/quoteSimbol");
+            var listaDeAtivos = driver.FindElementsById("br.com.cedrotech.fastmobile.dev:id/quoteSimbol");
 
             if (listaDeAtivos[0].Text == "")
             {
@@ -111,7 +111,7 @@ namespace FastTradeAndroid
 
             Thread.Sleep(3000);
 
-            var listaDeAtivos = driver.FindElementsById("br.com.cedrotech.fastmobile:id/quoteSimbol");
+            var listaDeAtivos = driver.FindElementsById("br.com.cedrotech.fastmobile.dev:id/quoteSimbol");
 
             if (listaDeAtivos[0].Text == "")
             {
@@ -145,7 +145,7 @@ namespace FastTradeAndroid
             btnSalvar.Click();
 
             Thread.Sleep(1000);
-            IWebElement elementoCapturado = oMetodosComuns.CapturaElementoDaLista(driver, nomePlanilhaCotacao, "br.com.cedrotech.fastmobile:id/listName");
+            IWebElement elementoCapturado = oMetodosComuns.CapturaElementoDaLista(driver, nomePlanilhaCotacao, "br.com.cedrotech.fastmobile.dev:id/listName");
 
             espera.Until(ExpectedConditions.ElementToBeClickable(elementoCapturado));
             elementoCapturado.Click();
@@ -164,7 +164,7 @@ namespace FastTradeAndroid
 
             try
             {
-                IWebElement elementoCapturado = oMetodosComuns.CapturaElementoDaLista(driver, nomePlanilha, "br.com.cedrotech.fastmobile:id/listName");
+                IWebElement elementoCapturado = oMetodosComuns.CapturaElementoDaLista(driver, nomePlanilha, "br.com.cedrotech.fastmobile.dev:id/listName");
 
                 espera.Until(ExpectedConditions.ElementToBeClickable(elementoCapturado));
                 elementoCapturado.Click();
@@ -180,7 +180,7 @@ namespace FastTradeAndroid
                 espera.Until(ExpectedConditions.ElementToBeClickable(btnSalvar));
                 btnSalvar.Click();
 
-                IWebElement elementoCapturado = oMetodosComuns.CapturaElementoDaLista(driver, nomePlanilha, "br.com.cedrotech.fastmobile:id/listName");
+                IWebElement elementoCapturado = oMetodosComuns.CapturaElementoDaLista(driver, nomePlanilha, "br.com.cedrotech.fastmobile.dev:id/listName");
 
                 espera.Until(ExpectedConditions.ElementToBeClickable(elementoCapturado));
                 elementoCapturado.Click();
@@ -201,8 +201,7 @@ namespace FastTradeAndroid
             //Nesse tratamento caso não haja uma planilha para renomear o teste cria uma.
             try
             {
-                var listaDePlanilhas = driver.FindElementsById("br.com.cedrotech.fastmobile:id/listName");
-                var planilhaSelecionada = listaDePlanilhas.FirstOrDefault(lp => lp.Text.ToUpperInvariant() == nomeDaPlanilha.ToUpperInvariant());
+                var planilhaSelecionada = oMetodosComuns.CapturaElementoDaLista(driver, nomeDaPlanilha, "br.com.cedrotech.fastmobile.dev:id/listName");
 
                 espera.Until(ExpectedConditions.ElementToBeClickable(planilhaSelecionada));
                 oMetodosComuns.LongPressPosicoesFixas(driver, planilhaSelecionada.Location.X + 300, planilhaSelecionada.Location.Y, planilhaSelecionada.Location.X, planilhaSelecionada.Location.Y);
@@ -227,8 +226,7 @@ namespace FastTradeAndroid
                 espera.Until(ExpectedConditions.ElementToBeClickable(btnSalvar));
                 btnSalvar.Click();
 
-                var listaDePlanilhas = driver.FindElementsById("br.com.cedrotech.fastmobile:id/listName");
-                var planilhaSelecionada = listaDePlanilhas.FirstOrDefault(lp => lp.Text.ToUpperInvariant() == nomeDaPlanilha.ToUpperInvariant());
+                var planilhaSelecionada = oMetodosComuns.CapturaElementoDaLista(driver, nomeDaPlanilha, "br.com.cedrotech.fastmobile.dev:id/listName");
 
                 espera.Until(ExpectedConditions.ElementToBeClickable(planilhaSelecionada));
                 oMetodosComuns.LongPressPosicoesFixas(driver, planilhaSelecionada.Location.X + 300, planilhaSelecionada.Location.Y, 100, planilhaSelecionada.Location.Y);
@@ -244,7 +242,7 @@ namespace FastTradeAndroid
             }
         }
 
-        public void ExcluirPlanilhaCotacao(string nomeNovaPlanilha)
+        public void ExcluirPlanilhaCotacao(string nomePlanilhaExcluida)
         {
             MetodosComuns oMetodosComuns = new MetodosComuns();
             TouchAction novaAcao = new TouchAction(driver);
@@ -258,8 +256,9 @@ namespace FastTradeAndroid
             //Nesse tratamento caso não haja uma planilha para renomear o teste cria uma.
             try
             {
-                //espera.Until(ExpectedConditions.ElementToBeClickable(segundaPlanilhaCotacao));
-                //oMetodosComuns.LongPressPorElemento(driver, segundaPlanilhaCotacao, true, false, 50);
+                var planilhaSelecionada = oMetodosComuns.CapturaElementoDaLista(driver, nomePlanilhaExcluida, "br.com.cedrotech.fastmobile.dev:id/listName");
+
+                oMetodosComuns.LongPressPosicoesFixas(driver, planilhaSelecionada.Location.X + 300, planilhaSelecionada.Location.Y, 100, planilhaSelecionada.Location.Y);
 
                 espera.Until(ExpectedConditions.ElementToBeClickable(btnExcluirPlanilha));
                 btnExcluirPlanilha.Click();
@@ -275,13 +274,14 @@ namespace FastTradeAndroid
                 btnCriarNovaLista.Click();
 
                 espera.Until(ExpectedConditions.ElementToBeClickable(campoNomeNovaPlanilha));
-                campoNomeNovaPlanilha.SendKeys(nomeNovaPlanilha);
+                campoNomeNovaPlanilha.SendKeys(nomePlanilhaExcluida);
 
                 espera.Until(ExpectedConditions.ElementToBeClickable(btnSalvar));
                 btnSalvar.Click();
 
-                //espera.Until(ExpectedConditions.ElementToBeClickable(segundaPlanilhaCotacao));
-                //oMetodosComuns.LongPressPorElemento(driver, segundaPlanilhaCotacao, true, false, 50);
+                var planilhaSelecionada = oMetodosComuns.CapturaElementoDaLista(driver, nomePlanilhaExcluida, "br.com.cedrotech.fastmobile.dev:id/listName");
+
+                oMetodosComuns.LongPressPosicoesFixas(driver, planilhaSelecionada.Location.X + 300, planilhaSelecionada.Location.Y, 100, planilhaSelecionada.Location.Y);
 
                 espera.Until(ExpectedConditions.ElementToBeClickable(btnExcluirPlanilha));
                 btnExcluirPlanilha.Click();
@@ -319,7 +319,7 @@ namespace FastTradeAndroid
             try
             {
                 Thread.Sleep(2000);
-                IWebElement elementoCapturado = oMetodosComuns.CapturaElementoDaLista(driver, nomeDoAtivo, "br.com.cedrotech.fastmobile:id/quoteSimbol");
+                IWebElement elementoCapturado = oMetodosComuns.CapturaElementoDaLista(driver, nomeDoAtivo, "br.com.cedrotech.fastmobile.dev:id/quoteSimbol");
 
                 espera.Until(ExpectedConditions.ElementToBeClickable(elementoCapturado));
                 oMetodosComuns.LongPressPosicoesFixas(driver, elementoCapturado.Location.X + 400, elementoCapturado.Location.Y, elementoCapturado.Location.X, elementoCapturado.Location.Y);
@@ -341,7 +341,7 @@ namespace FastTradeAndroid
                 btnAdicionaAtivoDaLista.Click();
 
                 Thread.Sleep(2000);
-                IWebElement elementoCapturado = oMetodosComuns.CapturaElementoDaLista(driver, nomeDoAtivo, "br.com.cedrotech.fastmobile:id/quoteSimbol");
+                IWebElement elementoCapturado = oMetodosComuns.CapturaElementoDaLista(driver, nomeDoAtivo, "br.com.cedrotech.fastmobile.dev:id/quoteSimbol");
 
                 espera.Until(ExpectedConditions.ElementToBeClickable(elementoCapturado));
                 oMetodosComuns.LongPressPosicoesFixas(driver, elementoCapturado.Location.X + 400, elementoCapturado.Location.Y, elementoCapturado.Location.X, elementoCapturado.Location.Y);

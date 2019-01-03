@@ -98,7 +98,7 @@ namespace FastTradeAndroid
         public void AcessoGraficoExpandido()
         {
             GraficoCotacao oGraficoCotacao = new GraficoCotacao();
-            oGraficoCotacao.AcessoGraficoExpandido();
+            oGraficoCotacao.AcessoGraficoExpandido("PETR4");
         }
     }
 

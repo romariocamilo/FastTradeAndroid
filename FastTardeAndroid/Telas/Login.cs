@@ -22,28 +22,28 @@ namespace FastTradeAndroid
 
         public Login()
         {
-            driver = Configuracao("br.com.cedrotech.fastmobile", "br.com.cedrotech.fastmobile.splash.SplashActivity");
+            driver = Configuracao("br.com.cedrotech.fastmobile.dev", "br.com.cedrotech.fastmobile.splash.SplashActivity");
             espera = new WebDriverWait(driver, TimeSpan.FromSeconds(20));
             PageFactory.InitElements(driver, this);
         }
 
-        [FindsBy(How = How.Id, Using = "br.com.cedrotech.fastmobile:id/userNameEditText")]
+        [FindsBy(How = How.Id, Using = "br.com.cedrotech.fastmobile.dev:id/userNameEditText")]
         IWebElement campoLogin;
 
-        [FindsBy(How = How.Id, Using = "br.com.cedrotech.fastmobile:id/passwordEditText")]
+        [FindsBy(How = How.Id, Using = "br.com.cedrotech.fastmobile.dev:id/passwordEditText")]
         IWebElement campoSenha;
 
-        [FindsBy(How = How.Id, Using = "br.com.cedrotech.fastmobile:id/loginButton")]
+        [FindsBy(How = How.Id, Using = "br.com.cedrotech.fastmobile.dev:id/loginButton")]
         IWebElement botaoLogin;
 
-        [FindsBy(How = How.Id, Using = "br.com.cedrotech.fastmobile:id/skipFingerprint")]
+        [FindsBy(How = How.Id, Using = "br.com.cedrotech.fastmobile.dev:id/skipFingerprint")]
         IWebElement botaoDigitalDepois;
 
 
         public void LoginCorreto()
         {
             espera.Until(ExpectedConditions.ElementToBeClickable(campoLogin));
-            campoLogin.SendKeys("caiocosta");
+            campoLogin.SendKeys("romariosouza");
             driver.HideKeyboard();
 
             espera.Until(ExpectedConditions.ElementToBeClickable(campoSenha));

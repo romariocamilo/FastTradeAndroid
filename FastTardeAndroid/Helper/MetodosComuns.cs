@@ -20,7 +20,7 @@ namespace FastTradeAndroid
             TouchAction touchAction = new TouchAction(driver);
             touchAction
             .Press(posicaoOrigemX, posicaoOrigemY)
-            .Wait(1000)
+            .Wait(2000)
             .MoveTo(posicaoDestinoX, posicaoDestinoY)
             .Release()
             .Perform();
@@ -219,12 +219,12 @@ namespace FastTradeAndroid
         public void AddAtivoNaPlanilhaCotacaoAtual(AppiumDriver<AndroidElement> driver, string nomeAtivo)
         {
             WebDriverWait espera = new WebDriverWait(driver, TimeSpan.FromSeconds(20));
-            IWebElement campoPesquisaAtivo = driver.FindElementById("br.com.cedrotech.fastmobile:id/autocompleteQuotation");
+            IWebElement campoPesquisaAtivo = driver.FindElementById("br.com.cedrotech.fastmobile.dev:id/autocompleteQuotation");
 
             espera.Until(ExpectedConditions.ElementToBeClickable(campoPesquisaAtivo));
             campoPesquisaAtivo.SendKeys(nomeAtivo);
 
-            IWebElement elementoCapturado = CapturaElementoDaLista(driver, nomeAtivo, "br.com.cedrotech.fastmobile:id/titleQuote");
+            IWebElement elementoCapturado = CapturaElementoDaLista(driver, nomeAtivo, "br.com.cedrotech.fastmobile.dev:id/titleQuote");
 
             int posicaoXBtnAdicionarAtivo = 816 + elementoCapturado.Location.X;
             int posicaoYBtnAdicionarAtivo = 29 + elementoCapturado.Location.Y;
@@ -232,7 +232,7 @@ namespace FastTradeAndroid
             Thread.Sleep(2000);
             driver.Tap(1, posicaoXBtnAdicionarAtivo, posicaoYBtnAdicionarAtivo, 2);
 
-            IWebElement btnAdicionaAtivoDaLista = driver.FindElementById("br.com.cedrotech.fastmobile:id/floatingActionButtonAddQuote");
+            IWebElement btnAdicionaAtivoDaLista = driver.FindElementById("br.com.cedrotech.fastmobile.dev:id/floatingActionButtonAddQuote");
 
             espera.Until(ExpectedConditions.ElementToBeClickable(btnAdicionaAtivoDaLista));
             btnAdicionaAtivoDaLista.Click();
