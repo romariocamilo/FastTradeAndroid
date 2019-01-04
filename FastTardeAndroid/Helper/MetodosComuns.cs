@@ -27,7 +27,7 @@ namespace FastTradeAndroid
         }
 
         //Esse método efetual um scrool no final de uma lista disponível
-        public void ScrollParaListasPlanilhasPorId(AppiumDriver<AndroidElement> driver, string seletorIdDoElemento = null, string seletorClassDoElemento = null)
+        public void ScrollParaListasPlanilhas(AppiumDriver<AndroidElement> driver, string seletorIdDoElemento = null, string seletorClassDoElemento = null)
         {
             //Nesse else o método captura o elemento da lista pela seletor Id
             if (seletorIdDoElemento != null)
@@ -236,6 +236,149 @@ namespace FastTradeAndroid
 
             espera.Until(ExpectedConditions.ElementToBeClickable(btnAdicionaAtivoDaLista));
             btnAdicionaAtivoDaLista.Click();
+        }
+
+        public void HabilitaExclusaoAtivosDaPlanilha(AppiumDriver<AndroidElement> driver, IWebElement elemento)
+        {
+            TouchAction touchAction = new TouchAction(driver);
+            touchAction
+            .Press(elemento.Location.X + 400, elemento.Location.Y)
+            .Wait(2000)
+            .MoveTo(elemento.Location.X, elemento.Location.Y)
+            .Release()
+            .Perform();
+        }
+
+        public void HabilitaRenomearExcluirPlanilha(AppiumDriver<AndroidElement> driver, IWebElement elemento)
+        {
+            TouchAction touchAction = new TouchAction(driver);
+            touchAction
+            .Press(elemento.Location.X + 300, elemento.Location.Y)
+            .Wait(2000)
+            .MoveTo(100, elemento.Location.Y)
+            .Release()
+            .Perform();
+        }
+
+        public IWebElement CapturaNoticiaDaLista(AppiumDriver<AndroidElement> driver, string tagDaNoticia, string seletorIdDoElemento = null, string seletorClassDoElemento = null, bool loop = false)
+        {
+            int contador = 0;
+            int breakLoopNoticias = 20;
+
+            //Nesse else o método captura o elemento da lista pela seletor Id
+            if (seletorIdDoElemento != null)
+            {
+                IWebElement elementoCapturado = null;
+                WebDriverWait espera = new WebDriverWait(driver, TimeSpan.FromSeconds(20));
+
+                while (elementoCapturado == null)
+                {
+                    Thread.Sleep(2000);
+                    var lista = driver.FindElementsById(seletorIdDoElemento);
+                    var elementOrigem = lista.LastOrDefault();
+                    var elementoDestino = lista.FirstOrDefault();
+
+                    var nomeElementoOrigem = elementOrigem.Text;
+                    var nomeElementoDestino = elementoDestino.Text;
+
+                    elementoCapturado = lista.FirstOrDefault(e => e.Text.ToUpperInvariant().Contains(tagDaNoticia.ToUpperInvariant()));
+
+                    if (elementoCapturado != null)
+                    {
+                        break;
+                    }
+
+                    Thread.Sleep(1000);
+                    TouchAction touchAction = new TouchAction(driver);
+
+                    touchAction
+                    .Press(elementOrigem.Location.X, elementOrigem.Location.Y)
+                    .Wait(1000)
+                    .MoveTo(elementoDestino.Location.X, elementoDestino.Location.Y)
+                    .Release()
+                    .Perform();
+
+                    lista = driver.FindElementsById(seletorIdDoElemento);
+                    elementOrigem = lista.LastOrDefault();
+                    elementoDestino = lista.FirstOrDefault();
+
+                    var nomeNovoElementoOrigem = elementOrigem.Text;
+                    var nomeNovoElementoDestino = elementoDestino.Text;
+
+                    if (nomeElementoOrigem == nomeNovoElementoOrigem && nomeElementoDestino == nomeNovoElementoDestino)
+                    {
+                        break;
+                    }
+
+                    if(contador == breakLoopNoticias && loop == true)
+                    {
+                        break;
+                    }
+
+                    contador++;
+                }
+                return elementoCapturado;
+            }
+
+            //Nesse else o método captura o elemento da lista pela seletor Class
+            else if (seletorClassDoElemento != null)
+            {
+                IWebElement elementoCapturado = null;
+                WebDriverWait espera = new WebDriverWait(driver, TimeSpan.FromSeconds(20));
+
+                while (seletorClassDoElemento == null)
+                {
+                    Thread.Sleep(2000);
+                    var lista = driver.FindElementsByClassName(seletorIdDoElemento);
+                    var elementOrigem = lista.LastOrDefault();
+                    var elementoDestino = lista.FirstOrDefault();
+
+                    var nomeElementoOrigem = elementOrigem.Text;
+                    var nomeElementoDestino = elementoDestino.Text;
+
+                    elementoCapturado = lista.FirstOrDefault(e => e.Text.ToUpperInvariant() == tagDaNoticia.ToUpperInvariant());
+
+                    if (elementoCapturado != null)
+                    {
+                        break;
+                    }
+
+                    Thread.Sleep(1000);
+                    TouchAction touchAction = new TouchAction(driver);
+
+                    touchAction
+                    .Press(elementOrigem.Location.X, elementOrigem.Location.Y)
+                    .Wait(1000)
+                    .MoveTo(elementoDestino.Location.X, elementoDestino.Location.Y)
+                    .Release()
+                    .Perform();
+
+                    lista = driver.FindElementsById(seletorIdDoElemento);
+                    elementOrigem = lista.LastOrDefault();
+                    elementoDestino = lista.FirstOrDefault();
+
+                    var nomeNovoElementoOrigem = elementOrigem.Text;
+                    var nomeNovoElementoDestino = elementoDestino.Text;
+
+                    if (nomeElementoOrigem == nomeNovoElementoOrigem && nomeElementoDestino == nomeNovoElementoDestino)
+                    {
+                        break;
+                    }
+
+                    if (contador == breakLoopNoticias && loop == true)
+                    {
+                        break;
+                    }
+
+                    contador++;
+                }
+                return elementoCapturado;
+            }
+
+            else
+            {
+                return null;
+            }
         }
     }
 }

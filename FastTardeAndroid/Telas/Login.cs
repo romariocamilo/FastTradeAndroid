@@ -56,5 +56,19 @@ namespace FastTradeAndroid
             espera.Until(ExpectedConditions.ElementToBeClickable(botaoDigitalDepois));
             botaoDigitalDepois.Click();
         }
+
+        public void LoginIncorreto()
+        {
+            espera.Until(ExpectedConditions.ElementToBeClickable(campoLogin));
+            campoLogin.SendKeys("usuarioincorreto");
+            driver.HideKeyboard();
+
+            espera.Until(ExpectedConditions.ElementToBeClickable(campoSenha));
+            campoSenha.SendKeys("102030");
+            driver.HideKeyboard();
+
+            espera.Until(ExpectedConditions.ElementToBeClickable(botaoLogin));
+            botaoLogin.Click();
+        }
     }
 }

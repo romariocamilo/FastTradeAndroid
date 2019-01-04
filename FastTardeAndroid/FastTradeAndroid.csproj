@@ -68,11 +68,13 @@
     <Compile Include="Configuracoes\AmbienteConfig.cs" />
     <Compile Include="Telas\ConsultaRapida.cs" />
     <Compile Include="Telas\LivroDeOfertas.cs" />
+    <Compile Include="Telas\Noticias.cs" />
     <Compile Include="Telas\PlanilhaCotacao.cs" />
     <Compile Include="Telas\GraficoCotacao.cs" />
     <Compile Include="Telas\Login.cs" />
     <Compile Include="Helper\MetodosComuns.cs" />
     <Compile Include="Telas\ResumoAtivo.cs" />
+    <Compile Include="TestesMetodos\TestesUnitarios.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

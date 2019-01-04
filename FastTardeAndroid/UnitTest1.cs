@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using FastTradeAndroid.Telas;
+using FastTradeAndroid.TestesMetodos;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.Android;
@@ -8,6 +9,26 @@ using OpenQA.Selenium.Remote;
 
 namespace FastTradeAndroid
 {
+    [TestClass]
+    public class TestesLogin
+    {
+        [TestMethod]
+        [Priority(1)]
+        public void LoginCorreto()
+        {
+            Login oLogin = new ConsultaRapida();
+            oLogin.LoginCorreto();
+        }
+
+        [TestMethod]
+        [Priority(1)]
+        public void LoginIncorreto()
+        {
+            Login oLogin = new ConsultaRapida();
+            oLogin.LoginIncorreto();
+        }
+    }
+
     [TestClass]
     public class TestesPlanilhaCotacao
     {
@@ -146,32 +167,30 @@ namespace FastTradeAndroid
         }
     }
 
-    //[TestClass]
-    //public class UnitTest2
-    //{
-    //    [TestMethod]
-    //    public void FluxoLogin()
-    //    {
-    //        //Aqui ocorrem os testes de login incorreto, login correto e logof sem corretora
-    //        Login oLogin = new Login();
-    //        oLogin.LoginCorreto();
-    //    }
+    [TestClass]
+    public class TestesNoticias
+    {
+        [TestMethod]
+        [Priority(1)]
+        public void ConsultarNoticias()
+        {
+            Noticias oNoticias = new Noticias();
+            oNoticias.PesquisaNoticia("PETR44444");
+        }
+    }
 
-    //    [TestMethod]
-    //    public void FluxoPesquisaRapidoAtivo()
-    //    {
-    //        //Aqui ocorrem os testes de login incorreto, login correto e logof sem corretora
-    //        ConsultaRapida oConsultaRapida = new ConsultaRapida();
-    //        oConsultaRapida.FluxoPesquisaRapidoAtivo("VULC3");
-    //    }
+    //Essa TestClass é usada somente para testar os metodos comuns
+    [TestClass]
+    public class TesteDeMetodos
+    {
+        [TestMethod]
+        [Priority(1)]
+        public void TesteMetodos()
+        {
+            TestesUnitarios oTestesUnitarios = new TestesUnitarios();
+            //oTestesUnitarios.teste("opa");
 
-    //    //Carteira Ausente Fast 1.11
-    //    [TestMethod]
-    //    public void FluxoVisualizaSaldo()
-    //    {
-    //        //Aqui ocorrem os testes de login incorreto, login correto e logof sem corretora
-    //        Carteira oCarteira = new Carteira();
-    //        oCarteira.VisualizaSaldo();
-    //    }
-    //}
+            oTestesUnitarios.teste2("petr4");
+        }
+    }
 }
